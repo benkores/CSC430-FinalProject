@@ -1,0 +1,38 @@
+version: "2"
+services:
+  webserver:
+    image: mydemophpimage
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./app:/var/www/html
+    environment:
+      MYSQL_DB_CONNECTION: test
+      MYSQL_DB_NAME: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      SITE_URL: http://localhost    
+  db:
+      container_name: CSC430sqldb
+      image: mysql:5.7
+      restart: always
+      environment:
+          MYSQL_ROOT_PASSWORD: my_secret_password
+          MYSQL_DATABASE: csc430_project
+          MYSQL_USER: test
+          MYSQL_PASSWORD: test
+      ports:
+            - "6033:3306"
+  phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      container_name: CSC430pma
+      ports:
+        - '8081:80'
+      restart: always
+      environment:
+        PMA_HOST: 
+        PMA_PORT: 3306
+        PMA_ARBITRARY: 1
+      links:
+        - db
