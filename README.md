@@ -3,7 +3,7 @@
 **Pre-requisites**
 - Docker: https://www.docker.com/
 
-**Before first use:**
+**Before use:**
   1) Navigate to base of project directory where docker-compose.yml is located.
   2) Open a command window and execute the following:
   ```
