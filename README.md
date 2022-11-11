@@ -4,7 +4,7 @@
 - Docker: https://www.docker.com/
 
 **Before first use:**
-  1) Open Docker if it isn't already
+  1) Open Docker if it isn't already and wait until it starts
   2) Navigate to base of project directory where docker-compose.yml is located.
   2) Open a command window in that directory and execute the following:
   ```
