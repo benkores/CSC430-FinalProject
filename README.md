@@ -4,8 +4,9 @@
 - Docker: https://www.docker.com/
 
 **Before first use:**
-  1) Navigate to base of project directory where docker-compose.yml is located.
-  2) Open a command window and execute the following:
+  1) Open Docker if it isn't already
+  2) Navigate to base of project directory where docker-compose.yml is located.
+  2) Open a command window in that directory and execute the following:
   ```
   docker build -t mydemophpimage .
   docker-compose up
