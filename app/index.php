@@ -21,7 +21,7 @@
   include 'class/airports.php';
   include 'class/flight_seats.php';
   include 'class/flights.php';
-  include 'class/userbookings.php';
+  include 'class/user_bookings.php';
   require 'config/simple_html_dom.php';
   $database = new Database();
   $db = $database->getConnection();

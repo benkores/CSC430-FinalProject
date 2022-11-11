@@ -24,21 +24,21 @@
                 array_push($flight, $row['arrival_time']);
                 array_push($flight, $row['gate']);
                 array_push($flight, $row['terminal']);
-                array_push($flight, $row['boarding_begins'));
-				array_push($flight, $row['boarding_ends'));
-				array_push($flight, $row['number_of_first_class_seats'));
-				array_push($flight, $row['number_of_business_class_seats'));
-				array_push($flight, $row['number_of_economy_seats'));
-				array_push($flight, $row['first_cost'));
-                array_push($flight, $row['business_cost'));
-				array_push($flight, $row['economy_cost'));
+                array_push($flight, $row['boarding_begins']);
+				array_push($flight, $row['boarding_ends']);
+				array_push($flight, $row['number_of_first_class_seats']);
+				array_push($flight, $row['number_of_business_class_seats']);
+				array_push($flight, $row['number_of_economy_seats']);
+				array_push($flight, $row['first_cost']);
+                array_push($flight, $row['business_cost']);
+				array_push($flight, $row['economy_cost']);
                 array_push($flights, $flight);
             }
             return $flights;
         }
 
         public function getSeatCost(int $flight_id, string $seat_type) {
-            double $cost;
+            $cost;
             if ($seat_type == "first") {
                 $seat_type = "first_cost";
             } else if ($seat_type == "business") {
