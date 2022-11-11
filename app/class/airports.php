@@ -9,7 +9,6 @@
 
         public function getFromAirports() {
             $from_airports = array();
-            $airport;
             $sqlQuery = "SELECT * FROM AIRPORTS";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
@@ -24,7 +23,6 @@
 
         public function getToAirports(string $from_airport) {
             $to_airports = array();
-            $airport;
             $sqlQuery = "SELECT * FROM AIRPORTS WHERE ID != '$from_airport'";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();

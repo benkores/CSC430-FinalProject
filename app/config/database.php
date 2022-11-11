@@ -7,7 +7,7 @@
         private $password = 'my_secret_password';
 
         public $conn;
-
+        
         public function getConnection(){
             $this->conn = null;
             try{

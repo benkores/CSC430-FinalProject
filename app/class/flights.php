@@ -12,7 +12,6 @@
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
             $flights = array();
-            $flight;
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $flight = array();
                 array_push($flight, $row['id']);
@@ -38,7 +37,6 @@
         }
 
         public function getSeatCost(int $flight_id, string $seat_type) {
-            $cost;
             if ($seat_type == "first") {
                 $seat_type = "first_cost";
             } else if ($seat_type == "business") {
