@@ -1,10 +1,10 @@
 <?php
 
     class Database {
-        private $host = 'db';
-        private $database_name = 'csc430_project';
+        private $host = 'localhost';
+        private $database_name = 'test';
         private  $username = 'root';
-        private $password = 'my_secret_password';
+        private $password = '';
 
         public $conn;
         
