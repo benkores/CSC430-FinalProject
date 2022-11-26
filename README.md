@@ -11,7 +11,7 @@
 **Before use:**
   1) Open XAMPP and start Apache and MySQL
   
-  ** PHPMyAdmin address (to view SQL database and execute SQL commands):**
+  **PHPMyAdmin address (to view SQL database and execute SQL commands):**
    localhost/phpmyadmin
   
   **Website address:**
