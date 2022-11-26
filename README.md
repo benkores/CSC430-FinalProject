@@ -15,5 +15,5 @@
    localhost/phpmyadmin
   
   **Website address:**
-  localhost/index.php
+  localhost
     
