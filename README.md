@@ -10,10 +10,10 @@
   ```git config --global --add safe.directory C:\xampp\htdocs```.
   If the path to your htdocs folder is different than change the command accordingly.
   
-  4) Open XAMPP and start Apache and MySQL
+  4) Open XAMPP Control Panel and start Apache and MySQL
  
 **Before use:**
-  1) Open XAMPP and start Apache and MySQL
+  1) Open XAMPP Control Panel and start Apache and MySQL
   
   **PHPMyAdmin address (to view SQL database and execute SQL commands):**
    localhost/phpmyadmin
