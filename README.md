@@ -1,26 +1,19 @@
 # CSC430-FinalProject
 
 **Pre-requisites**
-- Docker: https://www.docker.com/
+- XAMPP: https://www.apachefriends.org/
 
 **Before first use:**
-  1) Open Docker if it isn't already and wait until it starts
-  2) Navigate to base of project directory where docker-compose.yml is located.
-  2) Open a command window in that directory and execute the following:
-  ```
-  docker build -t mydemophpimage .
-  docker-compose up
-  ```
+  1) Clone the repository into any directory on your PC
+  2) Copy the contents of the repository (including the .git folder) into the htcdocs folder where XAMPP is installed (default is C:\xampp\)
+  3) Open XAMPP and start Apache and MySQL
+ 
 **Before use:**
-  1) Open Docker
-  2) Go to Containers tab
-  3) Next to the csc430-finalproject container click the play icon to start the container (if it's not already running)
+  1) Open XAMPP and start Apache and MySQL
   
-  **Accessing PHPMyAdmin (to view SQL database and execute SQL commands):**
-  - Address: localhost:8081
-  - Username: root
-  - Password: my_secret_password
+  ** PHPMyAdmin address (to view SQL database and execute SQL commands):**
+   localhost/phpmyadmin
   
   **Website address:**
-  localhost:80
+  localhost/index.php
     
