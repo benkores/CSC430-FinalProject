@@ -16,29 +16,33 @@
 
 <body>
   <div class="header">
-    <img src="/img/airplane_header.PNG" alt="Airplane Header">
-
     <nav class="navbar navbar-default">
+      <img src="/img/airplane_header.PNG" alt="Airplane Header">
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="/#"><b>BAX Airlines</b></a>
         </div>
-        <ul class="nav navbar-nav">
-          <li><a href="/book.php">Book a Flight</a></li>
-          <li><a href="/boarding_passes.php">Boarding Passes</a></li>
-          <li><a href="/policies">Policies</a></li>
-          <!--blank for now-->
-          <li><a href="/login_register.php">User Profile</a></li>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" href="/book.php">Book a Flight</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/boarding_passes.php">Boarding Passes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/">Policies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login_register.php">User Profile</a>
+          </li>
         </ul>
       </div>
     </nav>
   </div>
 
-  <!-- wrapper to put everything in a box below header -->
-  <!-- doesnt work yet -->
   <div class="wrapper">
-
-    <div></br>placeholder</br></div>
+    
+    <div>placeholder</div>
 
   </div>
   <!--wrapper end-->

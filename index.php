@@ -16,40 +16,53 @@
 
 <body>
   <div class="header">
-    <img src="/img/airplane_header.PNG" alt="Airplane Header">
-
     <nav class="navbar navbar-default">
+      <img src="/img/airplane_header.PNG" alt="Airplane Header">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="/#"><b>BAX Airlines</b></a>
+          <!-- this BAX Airlines header is also home/index/search flight -->
+          <a class="navbar-brand active" href="/#"><b>BAX Airlines</b></a>
         </div>
-        <ul class="nav navbar-nav">
-          <li><a href="/book.php">Book a Flight</a></li>
-          <li><a href="/boarding_passes.php">Boarding Passes</a></li>
-          <li><a href="/policies">Policies</a></li>
-          <!--blank for now-->
-          <li><a href="/login_register.php">User Profile</a></li>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" href="/book.php">Book a Flight</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/boarding_passes.php">Boarding Passes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/">Policies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login_register.php">User Profile</a>
+          </li>
         </ul>
       </div>
     </nav>
   </div>
 
-  <!-- wrapper to put everything in a box below header -->
-  <!-- doesnt work yet -->
   <div class="wrapper">
-
-    <div class="fromDestination">
-      <label for="from">FROM</label>
-      <div class="field">
-        <input type="text" placeholder="ATL (Atlantic In...)" required>
-      </div>
+    <!-- when <form> and </form> are uncommented, will function as a form -->
+    <!-- so rn button acts as a link not submit, uncomment <form> and </form> -->
+    <!-- <form> -->
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+      <label class="form-check-label" for="inlineRadio1">One Way Trip</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+      <label class="form-check-label" for="inlineRadio2">Round Trip</label>
     </div>
 
-    <div class="toDestination">
-      <label for="to">TO</label>
-      <div class="field">
-        <input type="text" placeholder="LAX (Los Angele...)" required>
-      </div>
+    </br></br>
+
+    <div class="form-group">
+      <label for="fromDestination">FROM</label>
+      <input type="text" class="form-control" id="inputFrom" placeholder="ATL (Atlantic International L..." required>
+    </div>
+    <div class="form-group">
+      <label for="toDestination">TO</label>
+      <input type="text" class="form-control" id="inputTo" placeholder="LAX (Los Angeles Internationa..." required>
     </div>
 
     </br>
@@ -57,7 +70,7 @@
     <div class="departureDate">
       <label for="to">DEPARTURE DATE</label>
       <div class="field">
-        <input type="date" data-date-inline-picker="true" required />
+        <input type="date" data-date-inline-picker="true" class="dd" required />
       </div>
     </div>
 
@@ -66,7 +79,7 @@
     <div class="dropdown">
       <label for="Travelers">TRAVELERS:</label>
       <select name="adults" id="adults">
-        <option value="0">0</option>
+        <option value="0" selected>0</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -76,12 +89,10 @@
       </span>
     </div>
 
-    </br>
-
-    <div class="dropdown">
+    <div class="dropdown" style="padding-top: 5px;">
       <label style="margin-left: 92px"></label>
       <select name="childs" id="childs">
-        <option value="0">0</option>
+        <option value="0" selected>0</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -95,22 +106,21 @@
 
     <div class="dropdown">
       <label for="Travelers">CLASS:</label>
-      <select name="childs" id="childs">
+      <select name="class" id="class">
         <option value="economy">Economy</option>
         <option value="business">Business</option>
         <option value="first">First</option>
       </select>
     </div>
 
-    </br>
+    </br></br>
 
-    <!-- will be replaced by eventlistener -->
-    <a href=flight_results.php>
-      <button class="button">Search</button>
+    <!-- can be replaced by eventlistener -->
+    <a href="/flight_results.php">
+      <button type="submit" class="btn btn-primary">Search</button>
     </a>
-
+    <!-- </form> -->
   </div>
-  <!--wrapper end-->
 
 </body>
 
