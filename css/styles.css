@@ -10,7 +10,7 @@
 /* fits airplane picture to any size window and keeps relative size */
 img {
   width: 100%;
-  max-height: 15rem
+  max-height: 15rem;
 }
 
 /* changes font size of BAX Airplanes */
@@ -30,7 +30,6 @@ body {
   height: 100%;
   width: 100%;
   place-items: center;
-  background: -webkit-linear-gradient(top, #6ca4ff, #ff977a);
 }
 
 /* that orangy thing around the forms */
