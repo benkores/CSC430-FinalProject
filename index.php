@@ -40,7 +40,6 @@
       </div>
     </nav>
   </div>
-
   <div class="wrapper">
     <!-- when <form> and </form> are uncommented, will function as a form -->
     <!-- so rn button acts as a link not submit, uncomment <form> and </form> -->
@@ -74,6 +73,12 @@
       </div>
     </div>
 
+    <div class="arrivalDate">
+      <label for="from">ARRIVAL DATE</label>
+      <div class="field">
+        <input type="date" date-date-inline-picker="true" class="dd" required />
+      </div>
+    </div>
     </br>
 
     <div class="dropdown">
@@ -98,7 +103,7 @@
         <option value="3">3</option>
       </select>
       <span style="font-size: 10pt;">
-        CHILDS
+        CHILDREN
       </span>
     </div>
 
