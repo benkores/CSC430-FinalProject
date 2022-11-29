@@ -30,10 +30,10 @@
             <a class="nav-link" href="/boarding_passes.php">Boarding Passes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login_register.php">Login</a>
+            <a class="nav-link" href="/profile.php">User Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/profile.php">User Profile</a>
+            <a class="nav-link" href="/login_register.php">Login</a>
           </li>
         </ul>
       </div>
