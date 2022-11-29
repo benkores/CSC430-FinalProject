@@ -7,57 +7,63 @@
   font-family: 'Raleway', sans-serif;
 }
 
-
-/* for links */
-a,
-a:hover {
-  text-decoration: none;
-  color: white
-}
-
+/* fits airplane picture to any size window and keeps relative size */
 img {
   width: 100%;
+  max-height: 15rem
 }
 
+/* change font size of BAX Airplanes */
+.navbar-brand {
+  font-size: 30px
+}
+
+/* change nav link color from default blue to white */
+.navbar-brand,
+.nav-link {
+  color: white !important;
+}
+
+/* maintains and colors background */
 html,
 body {
-  /* display: grid; this changes to center */
   height: 100%;
   width: 100%;
   place-items: center;
   background: -webkit-linear-gradient(top, #6ca4ff, #ff977a);
 }
 
+/* that orangy thing around the forms */
 .wrapper {
   overflow: hidden;
   background: #FFC8AA;
   padding: 30px;
   border-radius: 10px;
+  width: 98%;
+  min-height: 62%;
+  margin: auto;
 }
 
+/* navbar color */
 .container-fluid {
   background: #423F3F;
 }
 
-/* .tab { margin-left: 40px; } */
-
-input {
+/* formats the dropdowns and calandar inputs */
+/* otherwise everything else can find on bootstrap */
+select,
+.dd {
   border: none;
   height: 35px;
-  width: 200px;
-  padding: 10px 10px 10px 10px
+  min-width: 35px;
+  padding: 0px 10px 0px 10px
 }
 
-select {
-  border: none;
-  height: 35px;
-}
-
-.button {
-  background-color: #578363;
-  color: white;
-  border: none;
-  height: 35px;
-  width: 90px;
-  border-radius: 5px;
+/* overrides default bootstrap button color and moves it to right*/
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+  background-color: #578363 !important;
+  float: right;
 }

@@ -16,54 +16,80 @@
 
 <body>
   <div class="header">
-    <img src="/img/airplane_header.PNG" alt="Airplane Header">
-
     <nav class="navbar navbar-default">
+      <img src="/img/airplane_header.PNG" alt="Airplane Header">
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="/#"><b>BAX Airlines</b></a>
         </div>
-        <ul class="nav navbar-nav">
-          <li><a href="/book.php">Book a Flight</a></li>
-          <li><a href="/boarding_passes.php">Boarding Passes</a></li>
-          <li><a href="/policies">Policies</a></li>
-          <!--blank for now-->
-          <li><a href="/login_register.php">User Profile</a></li>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" href="/book.php">Book a Flight</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/boarding_passes.php">Boarding Passes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/policies">Policies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/login_register.php">User Profile</a>
+          </li>
         </ul>
       </div>
     </nav>
   </div>
 
-  <!-- wrapper to put everything in a box below header -->
-  <!-- doesnt work yet -->
-  <div clas="wrapper">
-    <div class="registerForm">
-      <label for="register">REGISTER</label>
-      <div class="field">
-        <input type="text" placeholder="Username" required>
+  <div class="wrapper">
+    <div class="row">
+
+      <!-- register form -->
+      <div class="col-sm-6">
+        <h5 class="card-title"><b>REGISTER</b></h5>
+        </br>
+        <form>
+          <div class="form-group">
+            <label for="username">USERNAME</label>
+            <input type="text" class="form-control" id="inputUsername" placeholder="enter username">
+          </div>
+          </br>
+          <div class="form-group">
+            <label for="password">PASSWORD</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="enter password">
+          </div>
+          </br></br></br>
+          <button type="submit" class="btn btn-primary">REGISTER</button>
+        </form>
       </div>
-      </br>
-      <div class="field">
-        <input type="text" placeholder="Password" required>
+
+      <!-- login form -->
+      <div class="col-sm-6">
+        <h5 class="card-title"><b>LOGIN</b></h5>
+        </br>
+        <form>
+          <div class="form-group">
+            <label for="username">USERNAME</label>
+            <input type="text" class="form-control" id="inputUsername" placeholder="enter username">
+          </div>
+          </br>
+          <div class="form-group">
+            <label for="password">PASSWORD</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="enter password">
+          </div>
+          </br>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="dropdownCheck">
+            <label class="form-check-label" for="dropdownCheck">
+              Remember me
+            </label>
+          </div>
+          </br>
+          <button type="submit" class="btn btn-primary">LOGIN</button>
+        </form>
       </div>
-      </br>
-      <button class="button">REGISTER</button>
     </div>
 
-    </br>
-    
-    <div class="loginForm">
-      <label for="login">LOG IN</label>
-      <div class="field">
-        <input type="text" placeholder="Username" required>
-      </div>
-      </br>
-      <div class="field">
-        <input type="text" placeholder="Password" required>
-      </div>
-      </br>
-      <button class="button">LOGIN</button>
-    </div>
+  </div>
 
 </body>
 
