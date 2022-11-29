@@ -24,7 +24,7 @@
         </div>
         <ul class="nav justify-content-end">
           <li class="nav-item">
-            <a class="nav-link" href="/book.php">Book a Flight</a>
+            <a class="nav-link" href="/index.php">Book a Flight</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/boarding_passes.php">Boarding Passes</a>
@@ -33,7 +33,7 @@
             <a class="nav-link" href="/policies">Policies</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="/login_register.php">User Profile</a>
+            <a class="nav-link active" href="/profile.php">User Profile</a>
           </li>
         </ul>
       </div>

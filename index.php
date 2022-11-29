@@ -25,7 +25,7 @@
         </div>
         <ul class="nav justify-content-end">
           <li class="nav-item">
-            <a class="nav-link" href="/book.php">Book a Flight</a>
+            <a class="nav-link" href="#">Book a Flight</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/boarding_passes.php">Boarding Passes</a>
@@ -34,7 +34,7 @@
             <a class="nav-link" href="/">Policies</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login_register.php">User Profile</a>
+            <a class="nav-link" href="/profile.php">User Profile</a>
           </li>
         </ul>
       </div>
@@ -49,7 +49,7 @@
       <label class="form-check-label" for="inlineRadio1">One Way Trip</label>
     </div>
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked>
       <label class="form-check-label" for="inlineRadio2">Round Trip</label>
     </div>
 
