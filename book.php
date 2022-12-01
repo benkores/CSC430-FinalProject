@@ -10,11 +10,42 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
 
-    <title>Book</title>
+    <title>Book Flight</title>
   </head>
-  <body>
-    <h1>Hello, world!</h1>
-  </body>
+
+  <div class="header">
+    <nav class="navbar navbar-default">
+      <img src="/img/airplane_header.PNG" alt="Airplane Header">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <!-- this BAX Airlines header is also home/index/search flight -->
+          <a class="navbar-brand active" href="/#"><b>BAX Airlines</b></a>
+        </div>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Book a Flight</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/boarding_passes.php">Boarding Passes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/profile.php">User Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login_register.php">Login</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+
+  <div class="wrapper">
+    <div class="col">
+
+  </div>
+</div>
+
 </html>
 
 <?php
