@@ -15,81 +15,12 @@
 
 
   <body>
-  <div class="header">
-    <nav class="navbar navbar-default">
-      <img src="/img/airplane_header.PNG" alt="Airplane Header">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <!-- this BAX Airlines header is also home/index/search flight -->
-          <a class="navbar-brand active" href="/#"><b>BAX Airlines</b></a>
-        </div>
-        <ul class="nav justify-content-end">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Book a Flight</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/boarding_passes.php">Boarding Passes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/profile.php">User Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login_register.php">Login</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </div>
 
 
-  <div class="wrapper">
-    <div class="col">
+    <h1>Hello, world!</h1>
 
 
-          
-    
-    <h3><b>Fare:</b></h3>
-    <h3><b>Taxes and Fees:</b></h3>
-    <h3><b>Total Due:</b></h3>
-
-          <br>
-
-      <div class="cards">
-         <h4 class="cards"><b>Card Information</b></h4>
-         <img src="/img/visa.PNG" alt="visa"style="width:75px;height:50px;">
-         <img src="/img/mastercard.PNG" alt="mastercard"style="width:75px;height:50px;">
-         <img src="/img/americanexpress.PNG" alt="americanexpress"style="width:75px;height:50px;">
-         <img src="/img/discover.PNG" alt="discover"style="width:75px;height:50px;">
-      </div>
-       
-          <form>            
-          <div class="form-group row">
-              <label for="card num" class="col-sm-1 col-form-label">Card number: </label>
-              <input type="text" class="form-control" id="inputCardNum"style="width:25%;">
-            </div>
-            </br>
-            <div class="form-group row">
-             <label for="card name" class="col-sm-1 col-form-label">Name on card:</label>
-             <input type="text" class="form-control" id="inputCardName"style="width:25%;">
-           </div>
-            </br>
-           <div class="form-group row">
-             <label for="card name" class="col-sm-1 col-form-label">Expiration Date:</label>
-             <input type="text" class="form-control" id="Expiration"style="width:5%;" placeholder="MM/YY">
-           </div>
-           
-            </br></br></br>
-            <button onclick="window.location.href = 'book.php';">CANCEL</button>
-            <button type="submit" onclick="window.location.href = 'completed.php';" class="btn btn-primary">BUY</button>
-         </form>
-        </div>
-      </div>
-
-
-
-
-
-</body>
+  </body>
 </html>
 
 <?php
