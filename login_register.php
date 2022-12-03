@@ -58,7 +58,7 @@
             <input type="password" class="form-control" id="inputPassword" placeholder="enter password">
           </div>
           </br></br></br>
-          <button type="submit" class="btn btn-primary">REGISTER</button>
+          <button type="submit" id="register_submit" name="register_submit" class="btn btn-primary">REGISTER</button>
         </form>
       </div>
 
@@ -84,7 +84,7 @@
             </label>
           </div>
           </br>
-          <button type="submit" class="btn btn-primary">LOGIN</button>
+          <button type="submit" id="login_submit" name="login_submit" class="btn btn-primary">LOGIN</button>
         </form>
       </div>
     </div>

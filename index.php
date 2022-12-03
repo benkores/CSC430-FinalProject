@@ -9,18 +9,41 @@ if (isset($_POST['submit'])) {
   $_SESSION["class"] = $_POST['class'];
   $_SESSION["travelers"] = $_POST['travelers'];
   $option = $_POST['inlineRadioOptions'];
+  $flights = getFlightsDB()->getFlights($_SESSION["from"], $_SESSION["to"], $_SESSION["dep_date"]);
   if ($option == "option1") {
-    header("Location: flight_results_oneway.php");
-    exit();
+    if (count($flights) == 0) {
+      echo "<script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const errorElement = document.getElementById('error_msg');
+        errorElement.style.color = \"#FF0000\";
+        errorElement.innerHTML = \"No flight results found\";
+    });
+        </script>";
+    } else {
+      header("Location: flight_results_oneway.php");
+      exit();
+    }
   } else {
     $_SESSION["return_date"] = $_POST['return_date'];
-    header("Location: flight_results_roundtrip.php");
-    exit();
+    $flights_return = getFlightsDB()->getFlights($_SESSION["to"], $_SESSION["from"], $_SESSION["return_date"]);
+    if (count($flights) == 0 || count($flights_return) == 0) {
+      echo "<script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const errorElement = document.getElementById('error_msg');
+        errorElement.style.color = \"#FF0000\";
+        errorElement.innerHTML = \"No flight results found\";
+    });
+        </script>";
+    } else {
+      header("Location: flight_results_roundtrip.php");
+      exit();
+    }
   }
 }
 ?>
 <!doctype html>
 <html lang="en">
+
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -87,50 +110,51 @@ if (isset($_POST['submit'])) {
         }
         echo "</select>";
         ?>
-  </div><br>
-  <div class="dropdown">
-    <label for="ToDestination">TO:</label>
-    <?php
-        $to_airports = array();
-        $to_airports = getAirportsDB()->getToAirports("ATL");
-        echo "<select name='to' id='to'>";
-        foreach ($to_airports as $to_airport) {
-          echo "<option value='" . $to_airport[0] . "'>" . $to_airport[0] . " (" . $to_airport[1] . ")</option>";
-        }
-        echo "</select>";
-        ?>
-  </div><br>
-  <div class="departureDate">
-    <label for="to">DEPARTURE DATE</label>
-    <div class="field">
-      <input type="date" id="dept_date" name="dept_date" data-date-inline-picker="true" class="dd" required />
-    </div>
-  </div>
-  <div class="returnDate" id="returnDate">
-    <label for="from">RETURN DATE</label>
-    <div class="field">
-      <input type="date" id="return_date" name="return_date" date-date-inline-picker="true" class="dd" required/>
-    </div>
-  </div>
-  </br>
+      </div><br>
+      <div class="dropdown">
+        <label for="ToDestination">TO:</label>
+        <?php
+    $to_airports = array();
+    $to_airports = getAirportsDB()->getToAirports("ATL");
+    echo "<select name='to' id='to'>";
+    foreach ($to_airports as $to_airport) {
+      echo "<option value='" . $to_airport[0] . "'>" . $to_airport[0] . " (" . $to_airport[1] . ")</option>";
+    }
+    echo "</select>";
+    ?>
+      </div><br>
+      <div class="departureDate">
+        <label for="to">DEPARTURE DATE</label>
+        <div class="field">
+          <input type="date" id="dept_date" name="dept_date" data-date-inline-picker="true" class="dd" required />
+        </div>
+      </div><br>
+      <div class="returnDate" id="returnDate">
+        <label for="from">RETURN DATE</label>
+        <div class="field">
+          <input type="date" id="return_date" name="return_date" date-date-inline-picker="true" class="dd" required />
+        </div>
+      </div>
+      </br>
 
-  <div class="form-group">
-    <label for="Travelers">TRAVELERS:</label>
-    <input type="number" id="travelers" name="travelers" min="1" required>
-    </select>
-    </br><br>
-    <div class="dropdown">
-      <label for="TicketClass">CLASS:</label>
-      <select name="class" id="class">
-        <option value="economy">Economy</option>
-        <option value="business">Business</option>
-        <option value="first">First</option>
-      </select>
-    </div>
+      <div class="form-group">
+        <label for="Travelers">TRAVELERS:</label>
+        <input type="number" id="travelers" name="travelers" min="1" required>
+        </select>
+        </br><br>
+        <div class="dropdown">
+          <label for="TicketClass">CLASS:</label>
+          <select name="class" id="class">
+            <option value="economy">Economy</option>
+            <option value="business">Business</option>
+            <option value="first">First</option>
+          </select>
+        </div>
 
-    </br></br>
-    <button type="submit" name="submit" class="btn btn-primary">Search</button>
+        </br></br>
+        <button type="submit" name="submit" class="btn btn-primary">Search</button>
     </form>
+    <p id="error_msg"><b></b></p>
   </div>
 
 </body>
