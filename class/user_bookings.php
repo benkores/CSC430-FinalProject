@@ -3,9 +3,10 @@ class User_Bookings
 {
     private $conn;
 
-    public function __construct($db)
+    public function __construct()
     {
-        $this->conn = $db;
+        $this->conn = new Database();
+            $this->conn = $this->conn->getConnection();
     }
 
     public function addBooking(int $account_id, int $flight_id, int $seat_id, string $first_name, string $last_name, string $person_type)

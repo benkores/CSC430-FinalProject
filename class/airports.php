@@ -1,10 +1,12 @@
 <?php
+include_once "config/database.php";
     class Airports {
 
         private $conn;
 
-        public function __construct($db) {
-            $this->conn = $db;
+        public function __construct() {
+            $this->conn = new Database();
+            $this->conn = $this->conn->getConnection();
         }
 
         public function getFromAirports() {

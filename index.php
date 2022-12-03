@@ -1,6 +1,25 @@
+<?php
+session_start();
+require_once 'config/connect.php';
+if (isset($_POST['submit'])) {
+  $_SESSION["from"] = $_POST['from'];
+  $_SESSION["to"] = $_POST['to'];
+  $_SESSION["dep_date"] = $_POST['dept_date'];
+  $_SESSION["travelers"] = $_POST['travelers'];
+  $_SESSION["class"] = $_POST['class'];
+  $option = $_POST['inlineRadioOptions'];
+  if ($option == "option1") {
+    header("Location: flight_results_oneway.php");
+    exit();
+  } else {
+    $_SESSION["return_date"] = $_POST['return_date'];
+    header("Location: flight_results_roundtrip.php");
+    exit();
+  }
+}
+?>
 <!doctype html>
 <html lang="en">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -43,7 +62,7 @@
   <div class="wrapper">
     <!-- when <form> and </form> are uncommented, will function as a form -->
     <!-- so rn button acts as a link not submit, uncomment <form> and </form> -->
-    <form method="POST" action="flight_results.php">
+    <form method="POST" action="">
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"
           onclick="hide()">
@@ -59,18 +78,18 @@
       <div class="dropdown">
         <label for="fromDestination">FROM:</label>
         <?php
-          $from_airports = array();
-          $from_airports = getAirportsDB()->getFromAirports();
-          echo "<select name='from' id='from'>";
-          foreach ($from_airports as $from_airport) {
-            echo "<option value='" . $from_airport[0] . "'>" . $from_airport[0] . " (" . $from_airport[1] . ")</option>";
-          }
-          echo "</select>";
-          ?>
-      </div><br>
-      <div class="dropdown">
-        <label for="ToDestination">TO:</label>
-        <?php
+        $from_airports = array();
+        $from_airports = getAirportsDB()->getFromAirports();
+        echo "<select name='from' id='from'>";
+        foreach ($from_airports as $from_airport) {
+          echo "<option value='" . $from_airport[0] . "'>" . $from_airport[0] . " (" . $from_airport[1] . ")</option>";
+        }
+        echo "</select>";
+        ?>
+  </div><br>
+  <div class="dropdown">
+    <label for="ToDestination">TO:</label>
+    <?php
         $to_airports = array();
         $to_airports = getAirportsDB()->getToAirports("ATL");
         echo "<select name='to' id='to'>";
@@ -79,85 +98,43 @@
         }
         echo "</select>";
         ?>
-      </div><br>
-      <div class="departureDate">
-        <label for="to">DEPARTURE DATE</label>
-        <div class="field">
-          <input type="date" data-date-inline-picker="true" class="dd" required />
-        </div>
-      </div>
-      <div class="returnDate" id="returnDate">
-        <label for="from">RETURN DATE</label>
-        <div class="field">
-          <input type="date" date-date-inline-picker="true" class="dd" required />
-        </div>
-      </div>
-      </br>
+  </div><br>
+  <div class="departureDate">
+    <label for="to">DEPARTURE DATE</label>
+    <div class="field">
+      <input type="date" id="dept_date" name="dept_date" data-date-inline-picker="true" class="dd" required />
+    </div>
+  </div>
+  <div class="returnDate" id="returnDate">
+    <label for="from">RETURN DATE</label>
+    <div class="field">
+      <input type="date" id="return_date" name="return_date" date-date-inline-picker="true" class="dd"/>
+    </div>
+  </div>
+  </br>
 
-      <div class="dropdown">
-        <label for="Travelers">TRAVELERS:</label>
-        <select name="adults" id="adults">
-          <option value="0" selected>0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
-        <span style="font-size: 10pt;">
-          ADULTS
-        </span>
-      </div>
+  <div class="form-group">
+    <label for="Travelers">TRAVELERS:</label>
+    <input type="number" id="travelers" name="travelers" min="1" required>
+    </select>
+    </br><br>
+    <div class="dropdown">
+      <label for="TicketClass">CLASS:</label>
+      <select name="class" id="class">
+        <option value="economy">Economy</option>
+        <option value="business">Business</option>
+        <option value="first">First</option>
+      </select>
+    </div>
 
-      <div class="dropdown" style="padding-top: 5px;">
-        <label style="margin-left: 92px"></label>
-        <select name="childs" id="childs">
-          <option value="0" selected>0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
-        <span style="font-size: 10pt;">
-          CHILDREN
-        </span>
-      </div>
-
-      </br>
-
-      <div class="dropdown">
-        <label for="Travelers">CLASS:</label>
-        <select name="class" id="class">
-          <option value="economy">Economy</option>
-          <option value="business">Business</option>
-          <option value="first">First</option>
-        </select>
-      </div>
-
-      </br></br>
-      <button type="submit" class="btn btn-primary">Search</button>
+    </br></br>
+    <button type="submit" name="submit" class="btn btn-primary">Search</button>
     </form>
   </div>
 
 </body>
 
 </html>
-
-<?php
-$database = new Database();
-
-function getDB()
-{
-  require_once 'config/database.php';
-  $database = new Database();
-  $db = $database->getConnection();
-  return $db;
-}
-function getAirportsDB()
-{
-  require_once 'class/airports.php';
-  $airports = new Airports(getDb());
-  return $airports;
-}
-?>
-
 <script>
   function hide() {
     if (document.getElementById('inlineRadio1').checked) {

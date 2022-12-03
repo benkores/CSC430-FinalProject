@@ -8,8 +8,9 @@
 
         // Columns
         // Db connection
-        public function __construct($db){
-            $this->conn = $db;
+        public function __construct(){
+            $this->conn = new Database();
+            $this->conn = $this->conn->getConnection();
         }
 
         // GET ALL

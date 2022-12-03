@@ -4,9 +4,10 @@ class Flight_Seats
 
     private $conn;
 
-    public function __construct($db)
+    public function __construct()
     {
-        $this->conn = $db;
+        $this->conn = new Database();
+            $this->conn = $this->conn->getConnection();
     }
 
     public function getFlightSeats(int $flight_id)
