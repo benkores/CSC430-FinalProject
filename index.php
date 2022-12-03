@@ -109,7 +109,7 @@ if (isset($_POST['submit'])) {
   <div class="returnDate" id="returnDate">
     <label for="from">RETURN DATE</label>
     <div class="field">
-      <input type="date" id="return_date" name="return_date" date-date-inline-picker="true" class="dd"/>
+      <input type="date" id="return_date" name="return_date" date-date-inline-picker="true" class="dd" required/>
     </div>
   </div>
   </br>
@@ -139,13 +139,17 @@ if (isset($_POST['submit'])) {
 <script>
   function hide() {
     if (document.getElementById('inlineRadio1').checked) {
-      var element = document.getElementById("returnDate");
-      element.classList.remove("visible");
-      element.classList.add("invisible");
+      var element1 = document.getElementById("returnDate");
+      element1.classList.remove("visible");
+      element1.classList.add("invisible");
+      var element2 = document.getElementById("return_date");
+      element2.removeAttribute("required");
     } else if (document.getElementById('inlineRadio2').checked) {
       var element = document.getElementById("returnDate");
       element.classList.remove("invisible");
       element.classList.add("visible");
+      var element2 = document.getElementById("return_date");
+      element2.setAttribute("required");
     }
   }
 </script>
