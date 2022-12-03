@@ -4,6 +4,7 @@ session_start();
 ?>
 <!doctype html>
 <html lang="en">
+
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -42,13 +43,13 @@ session_start();
       </div>
     </nav>
   </div>
-  
+
   <?php
   $flights = array();
-  $flights = getFlightsDB()->getFlights($_SESSION["from"],$_SESSION["to"],$_SESSION["dep_date"]);
-  foreach($flights as $flight) {
+  $flights = getFlightsDB()->getFlights($_SESSION["from"], $_SESSION["to"], $_SESSION["dep_date"]);
+  foreach ($flights as $flight) {
     echo "<div class=\"wrapper\">
-    <h5 for=\"result\"><b>#1 &emsp;&emsp;" . $_SESSION["from"] . "-->" . $_SESSION["to"] . "</b></h5></br>
+    <h5 for=\"result\"><b>Flight ID # " . $flight[0] . "  " . $_SESSION["from"] . "-->" . $_SESSION["to"] . "</b></h5></br>
     <table>
       <tr>
         <td>
@@ -70,9 +71,18 @@ session_start();
             <li class=\"gateInfo\">" . $flight[7] . "</li>
             <li class=\"terminalInfo\">" . $flight[8] . "</li>
             <li class=\"boardingBeginsInfo\">" . $flight[9] . "</li>
-            <li class=\"boardingEndsInfo\">" . $flight[10] . "</li>
-            <li class=\"numberSeatsInfo\">60</li>
-            <li class=\"priceSeatInfo\">$200</li>
+            <li class=\"boardingEndsInfo\">" . $flight[10] . "</li>";
+    if ($_SESSION["class"] == "first") {
+      echo "<li class=\"numberSeatsInfo\">" . $flight[11] . " </li>";
+      echo "<li class=\"priceSeatInfo\">" . $flight[14] . "</li>";
+    } else if ($_SESSION["class"] == "business") {
+      echo "<li class=\"numberSeatsInfo\">" . $flight[12] . " </li>";
+      echo "<li class=\"priceSeatInfo\">" . $flight[15] . "</li>";
+    } else {
+      echo "<li class=\"numberSeatsInfo\">" . $flight[13] . " </li>";
+      echo "<li class=\"priceSeatInfo\">" . $flight[16] . "</li>";
+    }
+    echo "
           </ul>
         </td>
       </tr>
@@ -82,7 +92,6 @@ session_start();
   </div>";
   }
   ?>
-  </nav>
 </body>
 
 </html>

@@ -7,6 +7,7 @@ if (isset($_POST['submit'])) {
   $_SESSION["dep_date"] = $_POST['dept_date'];
   $_SESSION["travelers"] = $_POST['travelers'];
   $_SESSION["class"] = $_POST['class'];
+  $_SESSION["travelers"] = $_POST['travelers'];
   $option = $_POST['inlineRadioOptions'];
   if ($option == "option1") {
     header("Location: flight_results_oneway.php");

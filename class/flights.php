@@ -1,5 +1,5 @@
 <?php
-    include_once "config/database.php";
+    require_once "config/database.php";
     class Flights {
 
         private $conn;
