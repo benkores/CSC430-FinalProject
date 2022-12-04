@@ -86,7 +86,7 @@ if (isset($_SESSION['AccountID'])) {
       echo "<li class=\"priceSeatInfo\">$" . $flight[15] . "</li>";
     } else {
       echo "<li class=\"numberSeatsInfo\">" . $flight[13] . " </li>";
-      echo "<li class=\"priceSeatInfo\">$$" . $flight[16] . "</li>";
+      echo "<li class=\"priceSeatInfo\">$" . $flight[16] . "</li>";
     }
     echo "
           </ul>
