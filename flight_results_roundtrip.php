@@ -1,6 +1,5 @@
 <?php
 session_start();
-session_start();
 require_once 'config/connect.php';
 if (isset($_SESSION['AccountID'])) {
   $_SESSION['login'] = "Logout";
