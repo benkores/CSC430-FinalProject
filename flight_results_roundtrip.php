@@ -43,7 +43,7 @@ if (isset($_SESSION['AccountID'])) {
                 </div>
                 <ul class="nav justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link" href="/book.php">Book a Flight</a>
+                        <a class="nav-link" href="/index.php">Book a Flight</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/boarding_passes.php">Boarding Passes</a>
