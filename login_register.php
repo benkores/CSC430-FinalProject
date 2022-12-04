@@ -129,13 +129,6 @@ if (isset($_POST['login_submit'])) {
               placeholder="enter password" required>
           </div>
           </br>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="remember_check" id="remember_check" value="remember">
-            <label class="form-check-label" for="remember_check">
-              Remember me
-            </label>
-          </div>
-          </br>
           <p id="login_error_msg"></p>
           <button type="submit" id="login_submit" name="login_submit" class="btn btn-primary">LOGIN</button>
         </form>
