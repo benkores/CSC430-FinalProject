@@ -2,10 +2,10 @@
 session_start();
 require_once 'config/connect.php';
 if (isset($_SESSION['AccountID'])) {
-      $_SESSION['login'] = "Logout";
-  } else {
-    $_SESSION['login'] = "Login";
-  }
+  $_SESSION['login'] = "Logout";
+} else {
+  $_SESSION['login'] = "Login";
+}
 ?>
 <!doctype html>
 <html lang="en">

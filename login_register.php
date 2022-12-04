@@ -138,7 +138,7 @@ if (isset($_POST['login_submit'])) {
             </label>
           </div>
           </br>
-            <p id="login_error_msg"></p>
+          <p id="login_error_msg"></p>
           <button type="submit" id="login_submit" name="login_submit" class="btn btn-primary">LOGIN</button>
         </form>
       </div>

@@ -2,10 +2,10 @@
 session_start();
 require_once 'config/connect.php';
 if (isset($_SESSION['AccountID'])) {
-      $_SESSION['login'] = "Logout";
-  } else {
-    $_SESSION['login'] = "Login";
-  }
+  $_SESSION['login'] = "Logout";
+} else {
+  $_SESSION['login'] = "Login";
+}
 if (isset($_POST['submit'])) {
   $_SESSION["from"] = $_POST['from'];
   $_SESSION["to"] = $_POST['to'];
@@ -82,7 +82,8 @@ if (isset($_POST['submit'])) {
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/login_register.php">
-              <?php echo $_SESSION['login']?></a>
+              <?php echo $_SESSION['login'] ?>
+            </a>
           </li>
         </ul>
       </div>
@@ -119,14 +120,14 @@ if (isset($_POST['submit'])) {
       <div class="dropdown">
         <label for="ToDestination">TO:</label>
         <?php
-    $to_airports = array();
-    $to_airports = getAirportsDB()->getToAirports("ATL");
-    echo "<select name='to' id='to'>";
-    foreach ($to_airports as $to_airport) {
-      echo "<option value='" . $to_airport[0] . "'>" . $to_airport[0] . " (" . $to_airport[1] . ")</option>";
-    }
-    echo "</select>";
-    ?>
+        $to_airports = array();
+        $to_airports = getAirportsDB()->getToAirports("ATL");
+        echo "<select name='to' id='to'>";
+        foreach ($to_airports as $to_airport) {
+          echo "<option value='" . $to_airport[0] . "'>" . $to_airport[0] . " (" . $to_airport[1] . ")</option>";
+        }
+        echo "</select>";
+        ?>
       </div><br>
       <div class="departureDate">
         <label for="to">DEPARTURE DATE</label>
