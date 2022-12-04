@@ -12,7 +12,6 @@ if (isset($_POST['submit'])) {
   $_SESSION["dep_date"] = $_POST['dept_date'];
   $_SESSION["travelers"] = $_POST['travelers'];
   $_SESSION["class"] = $_POST['class'];
-  $_SESSION["travelers"] = $_POST['travelers'];
   $option = $_POST['inlineRadioOptions'];
   $flights = getFlightsDB()->getFlights($_SESSION["from"], $_SESSION["to"], $_SESSION["dep_date"]);
   if ($option == "option1") {
@@ -109,7 +108,6 @@ if (isset($_POST['submit'])) {
       <div class="dropdown">
         <label for="fromDestination">FROM:</label>
         <?php
-        $from_airports = array();
         $from_airports = getAirportsDB()->getFromAirports();
         echo "<select name='from' id='from'>";
         foreach ($from_airports as $from_airport) {
@@ -121,7 +119,6 @@ if (isset($_POST['submit'])) {
       <div class="dropdown">
         <label for="ToDestination">TO:</label>
         <?php
-        $to_airports = array();
         $to_airports = getAirportsDB()->getToAirports("ATL");
         echo "<select name='to' id='to'>";
         foreach ($to_airports as $to_airport) {
@@ -145,7 +142,7 @@ if (isset($_POST['submit'])) {
       </br>
 
       <div class="form-group">
-        <label for="Travelers">TRAVELERS:</label>
+        <label for="Travelers">NUMBER OF TRAVELERS:</label>
         <input type="number" id="travelers" name="travelers" min="1" required>
         </select>
         </br><br>
@@ -174,13 +171,13 @@ if (isset($_POST['submit'])) {
       element1.classList.remove("visible");
       element1.classList.add("invisible");
       var element2 = document.getElementById("return_date");
-      element2.removeAttribute("required");
+      element2.required = false;
     } else if (document.getElementById('inlineRadio2').checked) {
       var element = document.getElementById("returnDate");
       element.classList.remove("invisible");
       element.classList.add("visible");
       var element2 = document.getElementById("return_date");
-      element2.setAttribute("required");
+     element2.required = true;
     }
   }
 </script>

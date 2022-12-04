@@ -26,7 +26,6 @@ if (isset($_POST['register_submit'])) {
         errorElement.innerHTML = \"Registration successful! Please login.\";
     });
         </script>";
-    $account_id = getAccountsDB()->getAccountID($_POST['register_username']);
   }
 }
 if (isset($_POST['login_submit'])) {
