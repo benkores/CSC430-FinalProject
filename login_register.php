@@ -132,7 +132,7 @@ if (isset($_POST['login_submit'])) {
           <div class="form-check">
             <input type="checkbox" class="form-check-input" name="remember_check" id="remember_check" value="remember">
             <label class="form-check-label" for="remember_check">
-              Remember me for 30 days
+              Remember me
             </label>
           </div>
           </br>
