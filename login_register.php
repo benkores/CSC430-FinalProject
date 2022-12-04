@@ -12,7 +12,7 @@ if (isset($_POST['register_submit'])) {
   if (getAccountsDB()->checkUserExists($_POST['register_username'])) {
     echo "<script>
       document.addEventListener('DOMContentLoaded', function () {
-        const errorElement = document.getElementById('register_error_msg');
+        const errorElement = document.getElementById('register_msg');
         errorElement.style.color = \"#FF0000\";
         errorElement.innerHTML = \"Username already exists\";
     });
@@ -21,7 +21,7 @@ if (isset($_POST['register_submit'])) {
     getAccountsDB()->createAccount($_POST['register_username'], $_POST['register_password']);
     echo "<script>
       document.addEventListener('DOMContentLoaded', function () {
-        const errorElement = document.getElementById('register_success_msg');
+        const errorElement = document.getElementById('register_msg');
         errorElement.style.color = \"#228C22\";
         errorElement.innerHTML = \"Registration successful! Please login.\";
     });
@@ -33,7 +33,7 @@ if (isset($_POST['login_submit'])) {
   if (!getAccountsDB()->authenticateAccount($_POST['login_username'], $_POST['login_password'])) {
     echo "<script>
       document.addEventListener('DOMContentLoaded', function () {
-        const errorElement = document.getElementById('register_error_msg');
+        const errorElement = document.getElementById('login_msg');
         errorElement.style.color = \"#FF0000\";
         errorElement.innerHTML = \"Invalid username or password!\";
     });
@@ -110,8 +110,7 @@ if (isset($_POST['login_submit'])) {
           </br></br></br>
           <button type="submit" id="register_submit" name="register_submit" class="btn btn-primary">REGISTER</button>
         </form>
-        <p id="register_error_msg"></p>
-        <p id="register_success_msg"></p>
+        <p id="register_msg"></p>
       </div>
 
       <!-- login form -->
@@ -141,6 +140,7 @@ if (isset($_POST['login_submit'])) {
           <p id="login_error_msg"></p>
           <button type="submit" id="login_submit" name="login_submit" class="btn btn-primary">LOGIN</button>
         </form>
+        <p id="login_msg"></p>
       </div>
     </div>
 
