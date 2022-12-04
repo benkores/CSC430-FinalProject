@@ -20,7 +20,6 @@ if (isset($_POST['submit'])) {
       echo "<script>
       document.addEventListener('DOMContentLoaded', function () {
         const errorElement = document.getElementById('error_msg');
-        errorElement.style.color = \"#FF0000\";
         errorElement.innerHTML = \"No flight results found\";
     });
         </script>";

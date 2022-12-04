@@ -13,7 +13,6 @@ if (isset($_POST['register_submit'])) {
     echo "<script>
       document.addEventListener('DOMContentLoaded', function () {
         const errorElement = document.getElementById('register_error_msg');
-        errorElement.style.color = \"#FF0000\";
         errorElement.innerHTML = \"Username already exists\";
     });
         </script>";
@@ -22,7 +21,6 @@ if (isset($_POST['register_submit'])) {
     echo "<script>
       document.addEventListener('DOMContentLoaded', function () {
         const errorElement = document.getElementById('register_success_msg');
-        errorElement.style.color = \"#00FF00\";
         errorElement.innerHTML = \"Registration successful!\";
     });
         </script>";
@@ -140,7 +138,7 @@ if (isset($_POST['login_submit'])) {
           </br>
           <button type="submit" id="login_submit" name="login_submit" class="btn btn-primary">LOGIN</button>
         </form>
-        <p id="login_error_msg" class="float-right"></p>
+        <p id="login_error_msg"></p>
       </div>
     </div>
 

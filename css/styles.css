@@ -85,3 +85,7 @@ td {
 {
   display: inline-block;
 }
+
+* {
+  font-weight:bold;
+}
