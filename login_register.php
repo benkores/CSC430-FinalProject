@@ -6,7 +6,7 @@ if (isset($_SESSION['AccountID'])) {
   unset($_SESSION['Username']);
   $_SESSION['login'] = "Login";
   header("Location: index.php");
-      exit();
+  exit();
 }
 if (isset($_POST['register_submit'])) {
   if (getAccountsDB()->checkUserExists($_POST['register_username'])) {
@@ -21,7 +21,7 @@ if (isset($_POST['register_submit'])) {
     echo "<script>
       document.addEventListener('DOMContentLoaded', function () {
         const errorElement = document.getElementById('register_success_msg');
-        errorElement.innerHTML = \"Registration successful!\";
+        errorElement.innerHTML = \"Registration successful! Please login.\";
     });
         </script>";
     $account_id = getAccountsDB()->getAccountID($_POST['register_username']);
@@ -41,8 +41,8 @@ if (isset($_POST['login_submit'])) {
     $_SESSION['login'] = "Logout";
     header("Location: index.php");
     exit();
-}
   }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -135,9 +135,9 @@ if (isset($_POST['login_submit'])) {
             </label>
           </div>
           </br>
+            <p id="login_error_msg"></p>
           <button type="submit" id="login_submit" name="login_submit" class="btn btn-primary">LOGIN</button>
         </form>
-        <p id="login_error_msg"></p>
       </div>
     </div>
 
