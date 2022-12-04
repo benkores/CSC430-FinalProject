@@ -106,7 +106,7 @@ if (isset($_POST['login_submit'])) {
             <input type="password" class="form-control" id="register_password" name="register_password"
               placeholder="enter password" required>
           </div>
-          </br></br></br>
+          </br>
           <button type="submit" id="register_submit" name="register_submit" class="btn btn-primary">REGISTER</button>
         </form>
         <p id="register_msg"></p>
@@ -129,7 +129,6 @@ if (isset($_POST['login_submit'])) {
               placeholder="enter password" required>
           </div>
           </br>
-          <p id="login_error_msg"></p>
           <button type="submit" id="login_submit" name="login_submit" class="btn btn-primary">LOGIN</button>
         </form>
         <p id="login_msg"></p>
