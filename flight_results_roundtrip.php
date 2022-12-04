@@ -128,14 +128,14 @@ if (isset($_SESSION['AccountID'])) {
           echo "<li class=\"numberSeatsInfo\">" . $flight_return[13] . " </li>";
           echo "<li class=\"priceSeatInfo\">$" . $flight_return[16] . "</li>";
         }
-        echo "
+      echo "
           </ul>
         </td>
       </tr>
     </table>";
       }
       echo "
-      <button type=\"submit\" id='book_id_$flight[0],$flight_return[0]' name='book_id_$flight[0],$flight_return[0]' class=\"btn btn-primary\">Book</button>;
+      <button type=\"submit\" id='book_id_$flight[0],$flight_return[0]' name='book_id_$flight[0],$flight_return[0]' class=\"btn btn-primary\">Book</button>
   </div>";
     }
     ?>
