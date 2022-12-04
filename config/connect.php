@@ -15,4 +15,9 @@ function getFlightsDB()
   $flights = new Flights();
   return $flights;
 }
+
+function getAccountsDB() {
+  $accounts = new Accounts();
+  return $accounts;
+}
 ?>

@@ -1,6 +1,21 @@
 <?php
-require_once 'config/connect.php';
 session_start();
+require_once 'config/connect.php';
+if (isset($_SESSION['AccountID'])) {
+  if (isset($_SESSION['login_time_stamp'])) {
+    if(time()-$_SESSION['login_time_stamp'] > 60*60*24*30) {
+      unset($_SESSION['AccountID']);
+      unset($_SESSION['Username']);
+      $_SESSION['login'] = "Login";
+    } else {
+      $_SESSION['login'] = "Logout";
+    }
+  } else {
+    $_SESSION['login'] = "Logout";
+  }
+} else {
+  $_SESSION['login'] = "Login";
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -37,7 +52,7 @@ session_start();
             <a class="nav-link" href="/profile.php">User Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login_register.php">Login</a>
+            <a class="nav-link" href="/login_register.php"><?php echo $_SESSION['login']?></a>
           </li>
         </ul>
       </div>

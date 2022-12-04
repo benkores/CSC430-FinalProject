@@ -1,3 +1,57 @@
+<?php
+session_start();
+require_once 'config/connect.php';
+if (isset($_SESSION['AccountID'])) {
+  unset($_SESSION['AccountID']);
+  unset($_SESSION['Username']);
+  $_SESSION['login'] = "Login";
+  header("Location: index.php");
+      exit();
+}
+if (isset($_POST['register_submit'])) {
+  if (getAccountsDB()->checkUserExists($_POST['register_username'])) {
+    echo "<script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const errorElement = document.getElementById('register_error_msg');
+        errorElement.style.color = \"#FF0000\";
+        errorElement.innerHTML = \"Username already exists\";
+    });
+        </script>";
+  } else {
+    getAccountsDB()->createAccount($_POST['register_username'], $_POST['register_password']);
+    echo "<script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const errorElement = document.getElementById('register_success_msg');
+        errorElement.style.color = \"#00FF00\";
+        errorElement.innerHTML = \"Registration successful!\";
+    });
+        </script>";
+    $account_id = getAccountsDB()->getAccountID($_POST['register_username']);
+  }
+}
+if (isset($_POST['login_submit'])) {
+  if (!getAccountsDB()->authenticateAccount($_POST['login_username'], $_POST['login_password'])) {
+    echo "<script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const errorElement = document.getElementById('register_error_msg');
+        errorElement.style.color = \"#FF0000\";
+        errorElement.innerHTML = \"Invalid username/password\";
+    });
+        </script>";
+  } else {
+    $_SESSION['AccountID'] = getAccountsDB()->getAccountID($_POST['login_username']);
+    $_SESSION['Username'] = $_POST['login_username'];
+    $_SESSION['login'] = "Logout";
+    if (isset($_POST['remember_check'])) {
+      if ($_POST['remember_check'] == 'remember') {
+      $_SESSION['login_time_stamp'] = time();
+      }
+    }
+    header("Location: index.php");
+      exit();
+    }
+}
+?>
 <!doctype html>
 <html lang="en">
 
@@ -11,7 +65,7 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="css/styles.css">
 
-  <title>User Profile</title>
+  <title>Login/Register</title>
 </head>
 
 <body>
@@ -39,7 +93,6 @@
       </div>
     </nav>
   </div>
-
   <div class="wrapper">
     <div class="row">
 
@@ -47,62 +100,52 @@
       <div class="col-sm-6">
         <h5 class="card-title"><b>REGISTER</b></h5>
         </br>
-        <form>
+        <form method="POST" action="">
           <div class="form-group">
             <label for="username">USERNAME</label>
-            <input type="text" class="form-control" id="inputUsername" placeholder="enter username">
+            <input type="text" class="form-control" id="register_username" name="register_username" placeholder="enter username" required>
           </div>
           </br>
           <div class="form-group">
             <label for="password">PASSWORD</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="enter password">
+            <input type="password" class="form-control" id="register_password" name="register_password" placeholder="enter password" required>
           </div>
           </br></br></br>
           <button type="submit" id="register_submit" name="register_submit" class="btn btn-primary">REGISTER</button>
         </form>
+        <p id="register_error_msg"></p>
+        <p id="register_success_msg"></p>
       </div>
 
       <!-- login form -->
       <div class="col-sm-6">
         <h5 class="card-title"><b>LOGIN</b></h5>
         </br>
-        <form>
+        <form method="POST" action="">
           <div class="form-group">
             <label for="username">USERNAME</label>
-            <input type="text" class="form-control" id="inputUsername" placeholder="enter username">
+            <input type="text" class="form-control" id="login_username" name="login_username" placeholder="enter username" required>
           </div>
           </br>
           <div class="form-group">
             <label for="password">PASSWORD</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="enter password">
+            <input type="password" class="form-control" id="login_password" name="login_password" placeholder="enter password" required>
           </div>
           </br>
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="dropdownCheck">
-            <label class="form-check-label" for="dropdownCheck">
-              Remember me
+            <input type="checkbox" class="form-check-input" name="remember_check" id="remember_check" value="remember">
+            <label class="form-check-label" for="remember_check">
+              Remember me for 30 days
             </label>
           </div>
           </br>
           <button type="submit" id="login_submit" name="login_submit" class="btn btn-primary">LOGIN</button>
         </form>
+        <p id="login_error_msg" class="float-right"></p>
       </div>
     </div>
 
   </div>
 
 </body>
-
 </html>
-
-<?php
-include 'config/database.php';
-include 'class/accounts.php';
-include 'class/airports.php';
-include 'class/flight_seats.php';
-include 'class/flights.php';
-include 'class/user_bookings.php';
-require 'config/simple_html_dom.php';
-$database = new Database();
-$db = $database->getConnection();
-?>
