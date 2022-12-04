@@ -32,7 +32,6 @@ if (isset($_POST['login_submit'])) {
     echo "<script>
       document.addEventListener('DOMContentLoaded', function () {
         const errorElement = document.getElementById('register_error_msg');
-        errorElement.style.color = \"#FF0000\";
         errorElement.innerHTML = \"Invalid username/password\";
     });
         </script>";
