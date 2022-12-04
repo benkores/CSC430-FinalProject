@@ -42,15 +42,10 @@ if (isset($_POST['login_submit'])) {
     $_SESSION['AccountID'] = getAccountsDB()->getAccountID($_POST['login_username']);
     $_SESSION['Username'] = $_POST['login_username'];
     $_SESSION['login'] = "Logout";
-    if (isset($_POST['remember_check'])) {
-      if ($_POST['remember_check'] == 'remember') {
-      $_SESSION['login_time_stamp'] = time();
-      }
-    }
     header("Location: index.php");
-      exit();
-    }
+    exit();
 }
+  }
 ?>
 <!doctype html>
 <html lang="en">
@@ -103,12 +98,14 @@ if (isset($_POST['login_submit'])) {
         <form method="POST" action="">
           <div class="form-group">
             <label for="username">USERNAME</label>
-            <input type="text" class="form-control" id="register_username" name="register_username" placeholder="enter username" required>
+            <input type="text" class="form-control" id="register_username" name="register_username"
+              placeholder="enter username" required>
           </div>
           </br>
           <div class="form-group">
             <label for="password">PASSWORD</label>
-            <input type="password" class="form-control" id="register_password" name="register_password" placeholder="enter password" required>
+            <input type="password" class="form-control" id="register_password" name="register_password"
+              placeholder="enter password" required>
           </div>
           </br></br></br>
           <button type="submit" id="register_submit" name="register_submit" class="btn btn-primary">REGISTER</button>
@@ -124,12 +121,14 @@ if (isset($_POST['login_submit'])) {
         <form method="POST" action="">
           <div class="form-group">
             <label for="username">USERNAME</label>
-            <input type="text" class="form-control" id="login_username" name="login_username" placeholder="enter username" required>
+            <input type="text" class="form-control" id="login_username" name="login_username"
+              placeholder="enter username" required>
           </div>
           </br>
           <div class="form-group">
             <label for="password">PASSWORD</label>
-            <input type="password" class="form-control" id="login_password" name="login_password" placeholder="enter password" required>
+            <input type="password" class="form-control" id="login_password" name="login_password"
+              placeholder="enter password" required>
           </div>
           </br>
           <div class="form-check">
@@ -148,4 +147,5 @@ if (isset($_POST['login_submit'])) {
   </div>
 
 </body>
+
 </html>

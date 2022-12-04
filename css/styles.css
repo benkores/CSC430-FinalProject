@@ -68,10 +68,6 @@ select,
   font-size: 17px;
 }
 
-.float-right {
-  float:right;
-}
-
 /* removes bullet points from list */
 ul,
 li {

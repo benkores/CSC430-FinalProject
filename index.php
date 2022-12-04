@@ -2,20 +2,10 @@
 session_start();
 require_once 'config/connect.php';
 if (isset($_SESSION['AccountID'])) {
-  if (isset($_SESSION['login_time_stamp'])) {
-    if(time()-$_SESSION['login_time_stamp'] > 60*60*24*30) {
-      unset($_SESSION['AccountID']);
-      unset($_SESSION['Username']);
-      $_SESSION['login'] = "Login";
-    } else {
       $_SESSION['login'] = "Logout";
-    }
   } else {
-    $_SESSION['login'] = "Logout";
+    $_SESSION['login'] = "Login";
   }
-} else {
-  $_SESSION['login'] = "Login";
-}
 if (isset($_POST['submit'])) {
   $_SESSION["from"] = $_POST['from'];
   $_SESSION["to"] = $_POST['to'];
