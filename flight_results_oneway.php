@@ -3,7 +3,7 @@ session_start();
 require_once 'config/connect.php';
 if (isset($_SESSION['AccountID'])) {
   if (isset($_SESSION['login_time_stamp'])) {
-    if(time()-$_SESSION['login_time_stamp'] > 60*60*24*30) {
+    if (time() - $_SESSION['login_time_stamp'] > 60 * 60 * 24 * 30) {
       unset($_SESSION['AccountID']);
       unset($_SESSION['Username']);
       $_SESSION['login'] = "Login";
@@ -52,7 +52,9 @@ if (isset($_SESSION['AccountID'])) {
             <a class="nav-link" href="/profile.php">User Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login_register.php"><?php echo $_SESSION['login']?></a>
+            <a class="nav-link" href="/login_register.php">
+              <?php echo $_SESSION['login'] ?>
+            </a>
           </li>
         </ul>
       </div>
@@ -89,13 +91,13 @@ if (isset($_SESSION['AccountID'])) {
             <li class=\"boardingEndsInfo\">" . $flight[10] . "</li>";
     if ($_SESSION["class"] == "first") {
       echo "<li class=\"numberSeatsInfo\">" . $flight[11] . " </li>";
-      echo "<li class=\"priceSeatInfo\">" . $flight[14] . "</li>";
+      echo "<li class=\"priceSeatInfo\">$" . $flight[14] . "</li>";
     } else if ($_SESSION["class"] == "business") {
       echo "<li class=\"numberSeatsInfo\">" . $flight[12] . " </li>";
-      echo "<li class=\"priceSeatInfo\">" . $flight[15] . "</li>";
+      echo "<li class=\"priceSeatInfo\">$" . $flight[15] . "</li>";
     } else {
       echo "<li class=\"numberSeatsInfo\">" . $flight[13] . " </li>";
-      echo "<li class=\"priceSeatInfo\">" . $flight[16] . "</li>";
+      echo "<li class=\"priceSeatInfo\">$$" . $flight[16] . "</li>";
     }
     echo "
           </ul>

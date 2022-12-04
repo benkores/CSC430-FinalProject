@@ -88,13 +88,13 @@ if (isset($_SESSION['AccountID'])) {
             <li class=\"boardingEndsInfo\">" . $flight[10] . "</li>";
         if ($_SESSION["class"] == "first") {
             echo "<li class=\"numberSeatsInfo\">" . $flight[11] . " </li>";
-            echo "<li class=\"priceSeatInfo\">" . $flight[14] . "</li>";
+            echo "<li class=\"priceSeatInfo\">$" . $flight[14] . "</li>";
         } else if ($_SESSION["class"] == "business") {
             echo "<li class=\"numberSeatsInfo\">" . $flight[12] . " </li>";
-            echo "<li class=\"priceSeatInfo\">" . $flight[15] . "</li>";
+            echo "<li class=\"priceSeatInfo\">$" . $flight[15] . "</li>";
         } else {
             echo "<li class=\"numberSeatsInfo\">" . $flight[13] . " </li>";
-            echo "<li class=\"priceSeatInfo\">" . $flight[16] . "</li>";
+            echo "<li class=\"priceSeatInfo\">$" . $flight[16] . "</li>";
         }
         echo "
           </ul>
@@ -121,7 +121,7 @@ if (isset($_SESSION['AccountID'])) {
         </td>
         <td>
           <ul class=\"information\">
-            <li class=\"departsInfo\">" . $_SESSION["dep_date"] . " " . $flight[4] . "</li>
+            <li class=\"departsInfo\">" . $_SESSION["return_date"] . " " . $flight[4] . "</li>
             <li class=\"arrivesInfo\">" . $flight[5] . " " . $flight[6] . "</li>
             <li class=\"gateInfo\">" . $flight[7] . "</li>
             <li class=\"terminalInfo\">" . $flight[8] . "</li>
@@ -129,13 +129,13 @@ if (isset($_SESSION['AccountID'])) {
             <li class=\"boardingEndsInfo\">" . $flight[10] . "</li>";
             if ($_SESSION["class"] == "first") {
                 echo "<li class=\"numberSeatsInfo\">" . $flight[11] . " </li>";
-                echo "<li class=\"priceSeatInfo\">" . $flight[14] . "</li>";
+                echo "<li class=\"priceSeatInfo\">$" . $flight[14] . "</li>";
             } else if ($_SESSION["class"] == "business") {
                 echo "<li class=\"numberSeatsInfo\">" . $flight[12] . " </li>";
-                echo "<li class=\"priceSeatInfo\">" . $flight[15] . "</li>";
+                echo "<li class=\"priceSeatInfo\">$" . $flight[15] . "</li>";
             } else {
                 echo "<li class=\"numberSeatsInfo\">" . $flight[13] . " </li>";
-                echo "<li class=\"priceSeatInfo\">" . $flight[16] . "</li>";
+                echo "<li class=\"priceSeatInfo\">$" . $flight[16] . "</li>";
             }
             echo "
           </ul>
