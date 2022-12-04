@@ -52,7 +52,6 @@ if (isset($_SESSION['AccountID'])) {
   </div>
 
   <?php
-  $flights = array();
   $flights = getFlightsDB()->getFlights($_SESSION["from"], $_SESSION["to"], $_SESSION["dep_date"]);
   foreach ($flights as $flight) {
     echo "<div class=\"wrapper\">
@@ -94,7 +93,7 @@ if (isset($_SESSION['AccountID'])) {
         </td>
       </tr>
     </table>
-      <button type=\"submit\" class=\"btn btn-primary\">Book</button>
+      <button type=\"submit\" id='book_id_$flight[0]' name='book_id_$flight[0]' class=\"btn btn-primary\">Book</button>
     </a>
   </div>";
   }

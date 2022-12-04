@@ -51,7 +51,6 @@ if (isset($_SESSION['AccountID'])) {
     </nav>
   </div>
   <?php
-    $flights = array();
     $flights = getFlightsDB()->getFlights($_SESSION["from"], $_SESSION["to"], $_SESSION["dep_date"]);
     foreach ($flights as $flight) {
       echo "<div class=\"wrapper\">
@@ -93,10 +92,10 @@ if (isset($_SESSION['AccountID'])) {
         </td>
       </tr>
     </table>";
-      $flights = getFlightsDB()->getFlights($_SESSION["to"], $_SESSION["from"], $_SESSION["return_date"]);
-      foreach ($flights as $flight) {
+      $flights_return = getFlightsDB()->getFlights($_SESSION["to"], $_SESSION["from"], $_SESSION["return_date"]);
+      foreach ($flights_return as $flight_return) {
         echo "
-    <h5 for=\"result\"><b>Flight ID # " . $flight[0] . "  " . $_SESSION["to"] . "-->" . $_SESSION["from"] . "</b></h5></br>
+    <h5 for=\"result\"><b>Flight ID # " . $flight_return[0] . "  " . $_SESSION["to"] . "-->" . $_SESSION["from"] . "</b></h5></br>
     <table>
       <tr>
         <td>
@@ -113,21 +112,21 @@ if (isset($_SESSION['AccountID'])) {
         </td>
         <td>
           <ul class=\"information\">
-            <li class=\"departsInfo\">" . $_SESSION["return_date"] . " " . $flight[4] . "</li>
-            <li class=\"arrivesInfo\">" . $flight[5] . " " . $flight[6] . "</li>
-            <li class=\"gateInfo\">" . $flight[7] . "</li>
-            <li class=\"terminalInfo\">" . $flight[8] . "</li>
-            <li class=\"boardingBeginsInfo\">" . $flight[9] . "</li>
-            <li class=\"boardingEndsInfo\">" . $flight[10] . "</li>";
+            <li class=\"departsInfo\">" . $_SESSION["return_date"] . " " . $flight_return[4] . "</li>
+            <li class=\"arrivesInfo\">" . $flight_return[5] . " " . $flight_return[6] . "</li>
+            <li class=\"gateInfo\">" . $flight_return[7] . "</li>
+            <li class=\"terminalInfo\">" . $flight_return[8] . "</li>
+            <li class=\"boardingBeginsInfo\">" . $flight_return[9] . "</li>
+            <li class=\"boardingEndsInfo\">" . $flight_return[10] . "</li>";
         if ($_SESSION["class"] == "first") {
-          echo "<li class=\"numberSeatsInfo\">" . $flight[11] . " </li>";
-          echo "<li class=\"priceSeatInfo\">$" . $flight[14] . "</li>";
+          echo "<li class=\"numberSeatsInfo\">" . $flight_return[11] . " </li>";
+          echo "<li class=\"priceSeatInfo\">$" . $flight_return[14] . "</li>";
         } else if ($_SESSION["class"] == "business") {
-          echo "<li class=\"numberSeatsInfo\">" . $flight[12] . " </li>";
-          echo "<li class=\"priceSeatInfo\">$" . $flight[15] . "</li>";
+          echo "<li class=\"numberSeatsInfo\">" . $flight_return[12] . " </li>";
+          echo "<li class=\"priceSeatInfo\">$" . $flight_return[15] . "</li>";
         } else {
-          echo "<li class=\"numberSeatsInfo\">" . $flight[13] . " </li>";
-          echo "<li class=\"priceSeatInfo\">$" . $flight[16] . "</li>";
+          echo "<li class=\"numberSeatsInfo\">" . $flight_return[13] . " </li>";
+          echo "<li class=\"priceSeatInfo\">$" . $flight_return[16] . "</li>";
         }
         echo "
           </ul>
@@ -136,7 +135,7 @@ if (isset($_SESSION['AccountID'])) {
     </table>";
       }
       echo "
-      <button type=\"submit\" class=\"btn btn-primary\">Book</button>;
+      <button type=\"submit\" id='book_id_$flight[0],$flight_return[0]' name='book_id_$flight[0],$flight_return[0]' class=\"btn btn-primary\">Book</button>;
   </div>";
     }
     ?>
