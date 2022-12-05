@@ -9,38 +9,48 @@ if (isset($_SESSION['AccountID'])) {
 if (isset($_POST['submit'])) {
   $_SESSION["from"] = $_POST['from'];
   $_SESSION["to"] = $_POST['to'];
-  $_SESSION["dep_date"] = $_POST['dept_date'];
-  $_SESSION["travelers"] = $_POST['travelers'];
-  $_SESSION["class"] = $_POST['class'];
-  $option = $_POST['inlineRadioOptions'];
-  $flights = getFlightsDB()->getFlights($_SESSION["from"], $_SESSION["to"], $_SESSION["dep_date"]);
-  if ($option == "option1") {
-    if (count($flights) == 0) {
-      echo "<script>
+  if ($_SESSION["from"] = $_SESSION["to"]) {
+    echo "<script>
       document.addEventListener('DOMContentLoaded', function () {
         const errorElement = document.getElementById('error_msg');
         errorElement.style.color = \"#FF0000\";
-        errorElement.innerHTML = \"No flight results found\";
+        errorElement.innerHTML = \"Departure airport and arrival airport cannot be the same\";
     });
         </script>";
-    } else {
-      header("Location: flight_results_oneway.php");
-      exit();
-    }
   } else {
-    $_SESSION["return_date"] = $_POST['return_date'];
-    $flights_return = getFlightsDB()->getFlights($_SESSION["to"], $_SESSION["from"], $_SESSION["return_date"]);
-    if (count($flights) == 0 || count($flights_return) == 0) {
-      echo "<script>
+    $_SESSION["dep_date"] = $_POST['dept_date'];
+    $_SESSION["travelers"] = $_POST['travelers'];
+    $_SESSION["class"] = $_POST['class'];
+    $option = $_POST['inlineRadioOptions'];
+    $flights = getFlightsDB()->getFlights($_SESSION["from"], $_SESSION["to"], $_SESSION["dep_date"]);
+    if ($option == "option1") {
+      if (count($flights) == 0) {
+        echo "<script>
       document.addEventListener('DOMContentLoaded', function () {
         const errorElement = document.getElementById('error_msg');
         errorElement.style.color = \"#FF0000\";
         errorElement.innerHTML = \"No flight results found\";
     });
         </script>";
+      } else {
+        header("Location: flight_results_oneway.php");
+        exit();
+      }
     } else {
-      header("Location: flight_results_roundtrip.php");
-      exit();
+      $_SESSION["return_date"] = $_POST['return_date'];
+      $flights_return = getFlightsDB()->getFlights($_SESSION["to"], $_SESSION["from"], $_SESSION["return_date"]);
+      if (count($flights) == 0 || count($flights_return) == 0) {
+        echo "<script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const errorElement = document.getElementById('error_msg');
+        errorElement.style.color = \"#FF0000\";
+        errorElement.innerHTML = \"No flight results found\";
+    });
+        </script>";
+      } else {
+        header("Location: flight_results_roundtrip.php");
+        exit();
+      }
     }
   }
 }
@@ -108,9 +118,9 @@ if (isset($_POST['submit'])) {
       <div class="dropdown">
         <label for="fromDestination">FROM:</label>
         <?php
-        $from_airports = getAirportsDB()->getFromAirports();
+        $airports = getAirportsDB()->getAirports();
         echo "<select name='from' id='from'>";
-        foreach ($from_airports as $from_airport) {
+        foreach ($airports as $from_airport) {
           echo "<option value='" . $from_airport[0] . "'>" . $from_airport[0] . " (" . $from_airport[1] . ")</option>";
         }
         echo "</select>";
@@ -119,9 +129,8 @@ if (isset($_POST['submit'])) {
       <div class="dropdown">
         <label for="ToDestination">TO:</label>
         <?php
-        $to_airports = getAirportsDB()->getToAirports("ATL");
         echo "<select name='to' id='to'>";
-        foreach ($to_airports as $to_airport) {
+        foreach ($airports as $to_airport) {
           echo "<option value='" . $to_airport[0] . "'>" . $to_airport[0] . " (" . $to_airport[1] . ")</option>";
         }
         echo "</select>";
