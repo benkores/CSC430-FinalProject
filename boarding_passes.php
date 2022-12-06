@@ -12,7 +12,37 @@
     <title>Boarding Passes</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <div class="header">
+      <img src="/img/airplane_header.PNG" alt="Airplane Header">
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/#"><b>BAX Airlines</b></a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="/book.php">Book a Flight</a></li>
+            <li><a href="/boarding_passes.php">Boarding Passes</a></li>
+            <li><a href="/policies">Policies</a></li>
+            <!--blank for now-->
+            <li><a href="/login_register.php">User Profile</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class= "boarding pass information">
+      <h2>ATL to LAX</h2>
+        <p>
+          Full Name: John Doe
+          Date: December 23, 2022
+          Boarding Time: 8:00am
+          Departing Airport: Atlanta International Airport
+          Arriving: Airport: Los Angeles International Airport 
+          Estimated Flight Duration: 6h 52m
+          Gate: 22A
+          Group C Seat: 23B
+        </p>
+    </div>
   </body>
 </html>
 
