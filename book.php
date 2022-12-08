@@ -43,6 +43,43 @@
   <div class="wrapper">
     <div class="col">
 
+    <form action="payment.php" method="POST">            
+          <div class="form-group row">
+              <label for="Fname" class="col-sm-1 col-form-label">First Name (required): </label>
+              <input type="text" class="form-control" id="inputCardNum"style="width:25%;">
+            </div>
+            </br>
+            <div class="form-group row">
+             <label for="Lname" class="col-sm-1 col-form-label">Last Name (required):</label>
+             <input type="text" class="form-control" id="inputCardName"style="width:25%;">
+           </div>
+            </br>
+           
+            <label for="cars">Person Type (required):</label>
+  <select name="People" id="AGE">
+    <option value="adult">Adult</option>
+    <option value="child">Child</option>
+  </select>
+           
+  <p>Choose a seat (required):</p>
+  <input type="radio" id="1" name="A" value="21A">
+  <label for="A">21A</label><br>
+  <input type="radio" id="2" name="B" value="21B">
+  <label for="B">21B</label><br>  
+  <input type="radio" id="3" name="C" value="21C">
+  <label for="C">21C</label><br>
+  <input type="radio" id="4" name="D" value="21D">
+  <label for="D">21D</label><br>
+  <input type="radio" id="5" name="E" value="21E">
+  <label for="E">21E</label><br>  
+  <input type="radio" id="6" name="F" value="21F">
+  <label for="F">21F</label>
+
+
+            </br></br></br>
+            <button type="submit" name="submit" class="btn btn-primary">Continue</button>
+         </form>
+
   </div>
 </div>
 
