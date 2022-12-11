@@ -1,3 +1,12 @@
+<?php
+session_start();
+require_once 'config/connect.php';
+if (isset($_SESSION['AccountID'])) {
+  $_SESSION['login'] = "Logout";
+} else {
+  $_SESSION['login'] = "Login";
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -63,15 +72,3 @@
     </div>
   </body>
 </html>
-
-<?php
-  include 'config/database.php';
-  include 'class/accounts.php';
-  include 'class/airports.php';
-  include 'class/flight_seats.php';
-  include 'class/flights.php';
-  include 'class/user_bookings.php';
-  require 'config/simple_html_dom.php';
-  $database = new Database();
-  $db = $database->getConnection();
-    ?>
