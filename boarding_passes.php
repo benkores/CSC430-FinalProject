@@ -61,6 +61,7 @@ if (isset($_SESSION['AccountID'])) {
           Estimated Flight Duration: 6h 52m
           Gate: 22A
           Group C Seat: 23B
+          Test
         </p>
     </div>
   </body>
