@@ -58,15 +58,14 @@ if (isset($_SESSION['AccountID'])) {
               <a href="/boarding_passes.php">View Boarding Passes</a>
               <br>
               <br>
-              <p>Username: johnsmith1234@aol.com</p>
-              <p>Password: **********</p>
+              <p>Username: johnsmith1234@aol.com  <button class="btn btn-danger ms-2">Change</button></p>
+              <p>Password: **********  <button class="btn btn-danger ms-2">Change</button></p>
               <br>
               <p> Payment Methods:</p>
-              <p> VISA 1234</p>
-              <button class="btn btn-primary">Add a new payment method</button>
+              <p>VISA 1234      <button class="btn btn-danger ms-2">Delete</button></p></p>
+              <p>Discover 5678     <button class="btn btn-danger ms-2">Delete</button></p></p>
               <br>
               <br>
-              <button class="btn btn-primary">Remove a payment method</button>
             </div>
           </div>
     </div>
