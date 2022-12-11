@@ -12,7 +12,55 @@
     <title>Profile</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <div class="header">
+      <nav class="navbar navbar-default">
+        <img src="/img/airplane_header.PNG" alt="Airplane Header">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <!-- this BAX Airlines header is also home/index/search flight -->
+            <a class="navbar-brand active" href="/#"><b>BAX Airlines</b></a>
+          </div>
+          <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Book a Flight</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/boarding_passes.php">Boarding Passes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/profile.php">User Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login_register.php">
+                <?php echo $_SESSION['login'] ?>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="wrapper">
+      <div class="row">
+        <div class="col-md-15">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Profile (John Smith)</h5>
+              
+              <a href="/boarding_passes.php">View Boarding Passes</a>
+              <br>
+              <br>
+              <p>Username: johnsmith1234@aol.com</p>
+              <p>Password: **********</p>
+              <br>
+              <p> Payment Methods:</p>
+              <p> VISA 1234</p>
+              <button class="btn btn-primary">Add a new payment method</button>
+              <br>
+              <br>
+              <button class="btn btn-primary">Remove a payment method</button>
+            </div>
+          </div>
+    </div>
   </body>
 </html>
 
