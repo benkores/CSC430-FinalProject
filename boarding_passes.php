@@ -56,14 +56,15 @@ if (isset($_SESSION['AccountID'])) {
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">ATL to LAX</h5>
-          <p class="card-text">Gate 21C | Class: B | Seat 12A</p>
-          <p>Full name: John Smith</p>
-          <p>Departure date: 12/23/2022</p>
-          <p>Origin: Atlanta International Airport (ATL)</p>
-          <p>Connection: Denver International Airport (DEN)</p>
-          <p>Destination: Atlanta International Airport (LAX)</p>
-          <p>Flight Duration: 6h 50 minutes</p>
-          <button class="btn btn-primary">Print</button>
+          <p class="card-text">Gate: 21C | Terminal: 1 | Boarding Group: 3 | Seat 12A</p>
+          <p>Name: John Smith</p>
+          <p>Person Type: Adult</p>
+          <p>Departs: 12/23/2022 9:00 AM</p>
+          <p>Arrives: 12/23/2022 12:00 PM</p>
+          <p>Boarding Begins: 8:15 AM</p>
+          <p>Boarding Ends: 8:45 AM</p>
+          <button class="btn btn-primary ms-1">Print</button>
+          <button class="btn btn-primary">Cancel</button>
         </div>
       </div>
     </div>
