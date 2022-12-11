@@ -64,7 +64,7 @@ if (isset($_SESSION['AccountID'])) {
           <p>Boarding Begins: 8:15 AM</p>
           <p>Boarding Ends: 8:45 AM</p>
           <button class="btn btn-primary ms-1">Print</button>
-          <button class="btn btn-primary">Cancel</button>
+          <button class="btn btn-primary">Cancel Booking</button>
         </div>
       </div>
     </div>
