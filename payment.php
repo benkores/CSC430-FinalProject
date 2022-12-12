@@ -56,10 +56,10 @@
 
       <div class="cards">
          <h4 class="cards"><b>Card Information</b></h4>
-         <img src="/img/visa.PNG" alt="visa"style="width:75px;height:50px;">
-         <img src="/img/mastercard.PNG" alt="mastercard"style="width:75px;height:50px;">
-         <img src="/img/americanexpress.PNG" alt="americanexpress"style="width:75px;height:50px;">
-         <img src="/img/discover.PNG" alt="discover"style="width:75px;height:50px;">
+         <img src="/img/visa.PNG" alt="visa"style="width:50px;height:30px;">
+         <img src="/img/mastercard.PNG" alt="mastercard"style="width:50px;height:30px;">
+         <img src="/img/americanexpress.PNG" alt="americanexpress"style="width:40px;height:30px;">
+         <img src="/img/discover.PNG" alt="discover"style="width:50px;height:30px;">
       </div>
        
           <form>            

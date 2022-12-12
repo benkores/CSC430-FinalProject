@@ -24,7 +24,7 @@
         </div>
         <ul class="nav justify-content-end">
           <li class="nav-item">
-            <a class="nav-link" href="#">Book a Flight</a>
+            <a class="nav-link" href="/book.php">Book a Flight</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/boarding_passes.php">Boarding Passes</a>
@@ -44,15 +44,17 @@
   <div class="wrapper">
     <div class="col">
 
+    <H1>TRAVELER 1</H1>
+
     <form action="payment.php" method="POST">            
           <div class="form-group row">
               <label for="Fname" class="col-sm-1 col-form-label">First Name (required): </label>
-              <input type="text" class="form-control" id="inputCardNum"style="width:25%;">
+              <input type="text" class="form-control" id="inputCardNum"style="width:50%;">
             </div>
             </br>
             <div class="form-group row">
              <label for="Lname" class="col-sm-1 col-form-label">Last Name (required):</label>
-             <input type="text" class="form-control" id="inputCardName"style="width:25%;">
+             <input type="text" class="form-control" id="inputCardName"style="width:50%;">
            </div>
             </br>
            
