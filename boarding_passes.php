@@ -33,7 +33,7 @@ if (isset($_SESSION['AccountID'])) {
         </div>
         <ul class="nav justify-content-end">
           <li class="nav-item">
-            <a class="nav-link" href="#">Book a Flight</a>
+            <a class="nav-link" href="/index.php">Book a Flight</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/boarding_passes.php">Boarding Passes</a>
@@ -50,18 +50,28 @@ if (isset($_SESSION['AccountID'])) {
       </div>
     </nav>
   </div>
-    <div class= "boarding pass information">
-      <h2>ATL to LAX</h2>
-        <p>
-          Full Name: John Doe
-          Date: December 23, 2022
-          Boarding Time: 8:00am
-          Departing Airport: Atlanta International Airport
-          Arriving: Airport: Los Angeles International Airport 
-          Estimated Flight Duration: 6h 52m
-          Gate: 22A
-          Group C Seat: 23B
-        </p>
+  <div class="wrapper">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">ATL to LAX</h5>
+          <p class="card-text">Gate: 21C | Terminal: 1 | Boarding Group: 3 | Seat 12A</p>
+          <p>Name: John Smith</p>
+          <p>Person Type: Adult</p>
+          <p>Departs: 12/23/2022 9:00 AM</p>
+          <p>Arrives: 12/23/2022 12:00 PM</p>
+          <p>Boarding Begins: 8:15 AM</p>
+          <p>Boarding Ends: 8:45 AM</p>
+          <button class="btn btn-primary ms-1">Print</button>
+          <button class="btn btn-primary">Cancel Booking</button>
+        </div>
+      </div>
     </div>
+
+      </div>
+    </div>
+  </div>
+</div>
   </body>
 </html>
