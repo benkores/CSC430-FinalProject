@@ -45,12 +45,18 @@
   <div class="wrapper">
     <div class="col">
 
+      <B><h3>ONE WAY (1 Traveler)</h3></B>
 
+    <div class="card w-25">
+  <div class="card-body">
+    <p class="card-text">Nov 1, 9:00 AM to 12:00 PM Economy<br> John Doe Adult</p>
+  </div>
+</div>
           
     
-    <h3><b>Fare:</b></h3>
-    <h3><b>Taxes and Fees:</b></h3>
-    <h3><b>Total Due:</b></h3>
+    <h3><b>Fare: $200.00</b></h3>
+    <h3><b>Taxes and Fees: $20.00</b></h3>
+    <h3><b>Total Due: $220.00</b></h3>
 
           <br>
 
@@ -77,8 +83,36 @@
              <label for="card name" class="col-sm-1 col-form-label">Expiration Date:</label>
              <input type="text" class="form-control" id="Expiration"style="width:5%;" placeholder="MM/YY">
            </div>
+
+                <b>Billing Information</b>
+
+           <div class="form-group row">
+              <label for="address" class="col-sm-1 col-form-label">Address: </label>
+              <input type="text" class="form-control" id="A"style="width:25%;">
+            </div>
+
+            <div class="form-group row">
+              <label for="City:" class="col-sm-1 col-form-label"> City: </label>
+              <input type="text" class="form-control" id="CI"style="width:25%;">
+            </div>
+
+            <div class="form-group row">
+              <label for="State:" class="col-sm-1 col-form-label">State: </label>
+              <input type="text" class="form-control" id="ST"style="width:25%;">
+            </div>
+
+            <div class="form-group row">
+              <label for="ZIP" class="col-sm-1 col-form-label">ZIP: </label>
+              <input type="text" class="form-control" id="ZIP" style="width:25%;">
+            </div>
+
+            <div class="form-group row">
+              <label for="Country:" class="col-sm-1 col-form-label"> Country: </label>
+              <input type="text" class="form-control" id="CO"style="width:25%;">
+            </div>
            
             </br></br></br>
+            <a href="./index.php"><button type="submit" name="submit" class="btn btn-primary">Cancel</button></a>
             <button type="submit" class="btn btn-primary">BUY</button>
          </form>
         </div>

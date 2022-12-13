@@ -49,12 +49,12 @@
     <form action="payment.php" method="POST">            
           <div class="form-group row">
               <label for="Fname" class="col-sm-1 col-form-label">First Name (required): </label>
-              <input type="text" class="form-control" id="inputCardNum"style="width:50%;">
+              <input type="text" class="form-control" id="inputCardNum"style="width:25%; height:25%;">
             </div>
             </br>
             <div class="form-group row">
              <label for="Lname" class="col-sm-1 col-form-label">Last Name (required):</label>
-             <input type="text" class="form-control" id="inputCardName"style="width:50%;">
+             <input type="text" class="form-control" id="inputCardName"style="width:25%; height:25%;">
            </div>
             </br>
            
@@ -80,8 +80,9 @@
 
 
             </br></br></br>
+            <a href="./index.php"><button type="submit" name="submit" class="btn btn-primary">Cancel</button></a>
             <button type="submit" name="submit" class="btn btn-primary">Continue</button>
-         </form>
+          </form>
 
   </div>
 </div>
