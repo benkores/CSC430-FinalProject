@@ -76,10 +76,6 @@ li {
   line-height: 2.5em;
 }
 
-/* adds some space between columns in table */
-td {
-  padding:0px 500px 0px 0px;
-}
 
 .cards
 {
@@ -88,4 +84,12 @@ td {
 
 * {
   font-weight:bold;
+}
+
+.float-right {
+ float:right;
+}
+
+table {
+  width: 100%;
 }

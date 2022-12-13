@@ -58,34 +58,34 @@ if (isset($_SESSION['AccountID'])) {
     <table>
       <tr>
         <td>
-          <ul class=\"infoLabels\">
-            <li class=\"departs\">Departs:</li>
-            <li class=\"arrives\">Arrives:</li>
-            <li class=\"gate\">Gate:</li>
-            <li class=\"terminal\">Terminal:</li>
-            <li class=\"boardingBegins\">Boarding Begins:</li>
-            <li class=\"boardingEnds\">Boarding Ends:</li>
-            <li class=\"numberSeats\">Number of Seats:</li>
-            <li class=\"priceSeat\">Price per Seat:</li>
+          <ul>
+            <li>Departs:</li>
+            <li>Arrives:</li>
+            <li>Gate:</li>
+            <li>Terminal:</li>
+            <li>Boarding Begins:</li>
+            <li>Boarding Ends:</li>
+            <li>Number of Seats:</li>
+            <li>Price per Seat:</li>
           </ul>
         </td>
         <td>
-          <ul class=\"information\">
-            <li class=\"departsInfo\">" . $_SESSION["dep_date"] . " " . $flight[4] . "</li>
-            <li class=\"arrivesInfo\">" . $flight[5] . " " . $flight[6] . "</li>
-            <li class=\"gateInfo\">" . $flight[7] . "</li>
-            <li class=\"terminalInfo\">" . $flight[8] . "</li>
-            <li class=\"boardingBeginsInfo\">" . $flight[9] . "</li>
-            <li class=\"boardingEndsInfo\">" . $flight[10] . "</li>";
+          <ul class=\"float-right\">
+            <li>" . $_SESSION["dep_date"] . " " . $flight[4] . "</li>
+            <li>" . $flight[5] . " " . $flight[6] . "</li>
+            <li>" . $flight[7] . "</li>
+            <li>" . $flight[8] . "</li>
+            <li>" . $flight[9] . "</li>
+            <li>" . $flight[10] . "</li>";
       if ($_SESSION["class"] == "first") {
-        echo "<li class=\"numberSeatsInfo\">" . $flight[11] . " </li>";
-        echo "<li class=\"priceSeatInfo\">$" . $flight[14] . "</li>";
+        echo "<li>" . $flight[11] . " </li>";
+        echo "<li>$" . $flight[14] . "</li>";
       } else if ($_SESSION["class"] == "business") {
-        echo "<li class=\"numberSeatsInfo\">" . $flight[12] . " </li>";
-        echo "<li class=\"priceSeatInfo\">$" . $flight[15] . "</li>";
+        echo "<li>" . $flight[12] . " </li>";
+        echo "<li>$" . $flight[15] . "</li>";
       } else {
-        echo "<li class=\"numberSeatsInfo\">" . $flight[13] . " </li>";
-        echo "<li class=\"priceSeatInfo\">$" . $flight[16] . "</li>";
+        echo "<li>" . $flight[13] . " </li>";
+        echo "<li>$" . $flight[16] . "</li>";
       }
       echo "
           </ul>
@@ -99,34 +99,34 @@ if (isset($_SESSION['AccountID'])) {
     <table>
       <tr>
         <td>
-          <ul class=\"infoLabels\">
-            <li class=\"departs\">Departs:</li>
-            <li class=\"arrives\">Arrives:</li>
-            <li class=\"gate\">Gate:</li>
-            <li class=\"terminal\">Terminal:</li>
-            <li class=\"boardingBegins\">Boarding Begins:</li>
-            <li class=\"boardingEnds\">Boarding Ends:</li>
-            <li class=\"numberSeats\">Number of Seats:</li>
-            <li class=\"priceSeat\">Price per Seat:</li>
+          <ul>
+            <li>Departs:</li>
+            <li>Arrives:</li>
+            <li>Gate:</li>
+            <li>Terminal:</li>
+            <li>Boarding Begins:</li>
+            <li>Boarding Ends:</li>
+            <li>Number of Seats:</li>
+            <li>Price per Seat:</li>
           </ul>
         </td>
         <td>
-          <ul class=\"information\">
-            <li class=\"departsInfo\">" . $_SESSION["return_date"] . " " . $flight_return[4] . "</li>
-            <li class=\"arrivesInfo\">" . $flight_return[5] . " " . $flight_return[6] . "</li>
-            <li class=\"gateInfo\">" . $flight_return[7] . "</li>
-            <li class=\"terminalInfo\">" . $flight_return[8] . "</li>
-            <li class=\"boardingBeginsInfo\">" . $flight_return[9] . "</li>
-            <li class=\"boardingEndsInfo\">" . $flight_return[10] . "</li>";
+          <ul>
+            <li>" . $_SESSION["return_date"] . " " . $flight_return[4] . "</li>
+            <li>" . $flight_return[5] . " " . $flight_return[6] . "</li>
+            <li>" . $flight_return[7] . "</li>
+            <li>" . $flight_return[8] . "</li>
+            <li>" . $flight_return[9] . "</li>
+            <li>" . $flight_return[10] . "</li>";
         if ($_SESSION["class"] == "first") {
-          echo "<li class=\"numberSeatsInfo\">" . $flight_return[11] . " </li>";
-          echo "<li class=\"priceSeatInfo\">$" . $flight_return[14] . "</li>";
+          echo "<li>" . $flight_return[11] . " </li>";
+          echo "<li>$" . $flight_return[14] . "</li>";
         } else if ($_SESSION["class"] == "business") {
-          echo "<li class=\"numberSeatsInfo\">" . $flight_return[12] . " </li>";
-          echo "<li class=\"priceSeatInfo\">$" . $flight_return[15] . "</li>";
+          echo "<li>" . $flight_return[12] . " </li>";
+          echo "<li>$" . $flight_return[15] . "</li>";
         } else {
-          echo "<li class=\"numberSeatsInfo\">" . $flight_return[13] . " </li>";
-          echo "<li class=\"priceSeatInfo\">$" . $flight_return[16] . "</li>";
+          echo "<li>" . $flight_return[13] . " </li>";
+          echo "<li>$" . $flight_return[16] . "</li>";
         }
       echo "
           </ul>
