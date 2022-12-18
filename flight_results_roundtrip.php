@@ -7,44 +7,55 @@ if (isset($_SESSION['AccountID'])) {
   $_SESSION['login'] = "Login";
 }
 if (isset($_POST['submit'])) {
-  $_SESSION['flight_id']  = $_POST['flight_id'];
-  $_SESSION['dep_time'] = $flight[4];
-  $_SESSION['arrive_date'] = $flight[5];
-  $_SESSION['arrive_time'] = $flight[6];
-  $_SESSION['gate'] = $flight[7];
-  $_SESSION['terminal'] = $flight[8];
-  $_SESSION['boarding_begins'] = $flight[9];
-  $_SESSION['boarding_ends'] = $flight[10];
-  if ($_SESSION["class"] == "first") {
-    $_SESSION['number_of_seats'] = $flight[11];
-    $_SESSION['price'] = $flight[14];
-  } else if ($_SESSION["class"] == "business") {
-    $_SESSION['number_of_seats'] = $flight[12];
-    $_SESSION['price'] = $flight[15];
+  if(isset($_SESSION['AccountID'])) {
+    $_SESSION['flight_id']  = $_POST['flight_id'];
+    $_SESSION['dep_time'] = $flight[4];
+    $_SESSION['arrive_date'] = $flight[5];
+    $_SESSION['arrive_time'] = $flight[6];
+    $_SESSION['gate'] = $flight[7];
+    $_SESSION['terminal'] = $flight[8];
+    $_SESSION['boarding_begins'] = $flight[9];
+    $_SESSION['boarding_ends'] = $flight[10];
+    if ($_SESSION["class"] == "first") {
+      $_SESSION['number_of_seats'] = $flight[11];
+      $_SESSION['price'] = $flight[14];
+    } else if ($_SESSION["class"] == "business") {
+      $_SESSION['number_of_seats'] = $flight[12];
+      $_SESSION['price'] = $flight[15];
+    } else {
+      $_SESSION['number_of_seats'] = $flight[13];
+      $_SESSION['price'] = $flight[16];
+    }
+    $_SESSION['flight_id_return']  = $_POST['flight_id_return'];
+    $_SESSION['dep_time_return'] = $flight_return[4];
+    $_SESSION['arrive_date_return'] = $flight_return[5];
+    $_SESSION['arrive_time_return'] = $flight_return[6];
+    $_SESSION['gate_return'] = $flight_return[7];
+    $_SESSION['terminal_return'] = $flight_return[8];
+    $_SESSION['boarding_begins_return'] = $flight_return[9];
+    $_SESSION['boarding_ends_return'] = $flight_return[10];
+    if ($_SESSION["class"] == "first") {
+      $_SESSION['number_of_seats_return'] = $flight_return[11];
+      $_SESSION['price_return'] = $flight_return[14];
+    } else if ($_SESSION["class"] == "business") {
+      $_SESSION['number_of_seats_return'] = $flight_return[12];
+      $_SESSION['price_return'] = $flight_return[15];
+    } else {
+      $_SESSION['number_of_seats_return'] = $flight_return[13];
+      $_SESSION['price_return'] = $flight_return[16];
+    }
+    header("Location: book.php");
+    exit();
   } else {
-    $_SESSION['number_of_seats'] = $flight[13];
-    $_SESSION['price'] = $flight[16];
+    echo "<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const errorElement = document.getElementById('bookmsg');
+      errorElement.style.color = \"#FF0000\";
+      errorElement.innerHTML = \"You must be logged in to book a flight.\";
+    });
+      alert('You must be logged in to book a flight.');
+        </script>";
   }
-  $_SESSION['flight_id_return']  = $_POST['flight_id_return'];
-  $_SESSION['dep_time_return'] = $flight_return[4];
-  $_SESSION['arrive_date_return'] = $flight_return[5];
-  $_SESSION['arrive_time_return'] = $flight_return[6];
-  $_SESSION['gate_return'] = $flight_return[7];
-  $_SESSION['terminal_return'] = $flight_return[8];
-  $_SESSION['boarding_begins_return'] = $flight_return[9];
-  $_SESSION['boarding_ends_return'] = $flight_return[10];
-  if ($_SESSION["class"] == "first") {
-    $_SESSION['number_of_seats_return'] = $flight_return[11];
-    $_SESSION['price_return'] = $flight_return[14];
-  } else if ($_SESSION["class"] == "business") {
-    $_SESSION['number_of_seats_return'] = $flight_return[12];
-    $_SESSION['price_return'] = $flight_return[15];
-  } else {
-    $_SESSION['number_of_seats_return'] = $flight_return[13];
-    $_SESSION['price_return'] = $flight_return[16];
-  }
-  header("Location: book.php");
-  exit();
 }
 ?>
 <!doctype html>
@@ -179,6 +190,7 @@ if (isset($_POST['submit'])) {
       <input type='hidden' name='flight_id' value='$flight[0]'>
       <input type='hidden' name='flight_id_return' value='$flight_return[0]'>
       <input type=\"submit\" id='submit' name='submit' value='Book' class=\"btn btn-primary\"></button>
+      <div id='bookmsg'></div>
         </form>
   </div>";
     }
