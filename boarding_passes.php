@@ -6,6 +6,9 @@ if (isset($_SESSION['AccountID'])) {
 } else {
   $_SESSION['login'] = "Login";
 }
+if (isset($_POST['submit'])) {
+  getBookingsDB()->deleteBooking(($_POST['booking_id']));
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -59,6 +62,7 @@ if (isset($_SESSION['AccountID'])) {
     $user_bookings = getBookingsDB()->getUserBookings($_SESSION['AccountID']);
     foreach ($user_bookings as $user_booking) {
       echo "<div class=\"row\">";
+      echo "<form action=\"\" method=\"POST\">";
       echo "<div class=\"card mb-3\" id=\"boarding-pass-" . $user_booking[16] . "\">
     <div class=\"card-body\">
     <h5 class=\"card-title\">" . $user_booking[1] . " to " . $user_booking[2] . "</h5>
@@ -69,7 +73,9 @@ if (isset($_SESSION['AccountID'])) {
     <p>Arrives: " . $user_booking[14] . "     " . $user_booking[15] . "</p>
     <p>Boarding Begins: " . $user_booking[8] . "</p>
     <p>Boarding Ends: " . $user_booking[9] . "</p>
-    <button class=\"btn btn-primary\">Cancel Booking</button>
+    <input type='hidden' name='booking_id' value='$user_booking[16]'>
+    <input type=\"submit\" id='submit' name='submit' value='Cancel Booking' class=\"btn btn-primary\"></button>
+    </form>
     </div>
     </div>
     </div>";

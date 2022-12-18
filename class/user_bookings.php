@@ -54,6 +54,12 @@ class User_Bookings
         return $bookings;
     }
 
+    public function deleteBooking(int $booking_id) {
+        $sqlQuery = "DELETE FROM USER_BOOKINGS WHERE ID=$booking_id";
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->execute();
+    }
+
     public function getColumnFromFlights(int $flight_id, string $column)
     {
         $sqlQuery = "SELECT $column FROM FLIGHTS WHERE ID=$flight_id";
