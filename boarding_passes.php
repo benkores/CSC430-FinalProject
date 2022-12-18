@@ -56,22 +56,23 @@ if (isset($_SESSION['AccountID'])) {
     $user_bookings = getBookingsDB()->getUserBookings($_SESSION['AccountID']);
     foreach ($user_bookings as $user_booking) {
       echo "<div class=\"row\">";
-      echo "<div class=\"card\">
-  <div class=\"card-body\">
-    <h5 class=\"card-title\">" . $user_booking[1] . " " . $user_booking[2] . "
-    <p class=\"card-text\">Gate: 21C | Terminal: 1 | Boarding Group: 3 | Seat 12A</p>
-    <p>Name: John Smith</p>
-    <p>Person Type: Adult</p>
-    <p>Departs: 12/23/2022 9:00 AM</p>
-    <p>Arrives: 12/23/2022 12:00 PM</p>
-    <p>Boarding Begins: 8:15 AM</p>
-    <p>Boarding Ends: 8:45 AM</p>
+      echo "<div class=\"card mb-3\">
+    <div class=\"card-body\">
+    <h5 class=\"card-title\">" . $user_booking[1] . " to " . $user_booking[2] . "</h5>
+    <p class=\"card-text\">Gate: " . $user_booking[6] . " | Terminal: " . $user_booking[7] . " | Boarding Group: " . $user_booking[10] . " | Seat: " . $user_booking[11] . "</p>
+    <p>Name: " . $user_booking[3] . " " . $user_booking[4] . "</p>
+    <p>Person Type: " . $user_booking[5] . "</p>
+    <p>Departs: " . $user_booking[12] . "     " . $user_booking[13] . "</p>
+    <p>Arrives: " . $user_booking[14] . "     " . $user_booking[15] . "</p>
+    <p>Boarding Begins: " . $user_booking[8] . "</p>
+    <p>Boarding Ends: " . $user_booking[9] . "</p>
     <button class=\"btn btn-primary ms-1\">Print</button>
     <button class=\"btn btn-primary\">Cancel Booking</button>
-  </div>
-  </div>
-</div>";
+    </div>
+    </div>
+    </div>";
     }
+
     ?>
   </div>
 </body>

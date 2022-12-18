@@ -44,6 +44,10 @@ class User_Bookings
                 array_push($booking, 3);
             }
             array_push($booking, $this->getColumnFromFlightSeats("seat", $row['seat_id']));
+            array_push($booking, $this->getColumnFromFlights($row['flight_id'], "departure_date"));
+            array_push($booking, $this->getColumnFromFlights($row['flight_id'], "departure_time"));
+            array_push($booking, $this->getColumnFromFlights($row['flight_id'], "arrival_date"));
+            array_push($booking, $this->getColumnFromFlights($row['flight_id'], "arrival_time"));
             array_push($bookings, $booking);
         }
         return $bookings;
@@ -55,7 +59,7 @@ class User_Bookings
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->execute();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $value =  `$row[$column]`;
+            $value =  $row[$column];
         }
         return $value;
     }
@@ -66,7 +70,7 @@ class User_Bookings
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->execute();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $value = `$row[$column]`;
+            $value = $row[$column];
         }
         return $value;
     }
