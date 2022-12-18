@@ -9,8 +9,9 @@ if (isset($_SESSION['AccountID'])) {
 ?>
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
+
+<head>
+  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="img/favicon.ico">
@@ -51,27 +52,28 @@ if (isset($_SESSION['AccountID'])) {
     </nav>
   </div>
   <div class="wrapper">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">ATL to LAX</h5>
-          <p class="card-text">Gate: 21C | Terminal: 1 | Boarding Group: 3 | Seat 12A</p>
-          <p>Name: John Smith</p>
-          <p>Person Type: Adult</p>
-          <p>Departs: 12/23/2022 9:00 AM</p>
-          <p>Arrives: 12/23/2022 12:00 PM</p>
-          <p>Boarding Begins: 8:15 AM</p>
-          <p>Boarding Ends: 8:45 AM</p>
-          <button class="btn btn-primary ms-1">Print</button>
-          <button class="btn btn-primary">Cancel Booking</button>
-        </div>
-      </div>
-    </div>
-
-      </div>
-    </div>
+    <?php
+    $user_bookings = getBookingsDB()->getUserBookings($_SESSION['AccountID']);
+    foreach ($user_bookings as $user_booking) {
+      echo "<div class=\"row\">";
+      echo "<div class=\"card\">
+  <div class=\"card-body\">
+    <h5 class=\"card-title\">" . $user_booking[1] . " " . $user_booking[2] . "
+    <p class=\"card-text\">Gate: 21C | Terminal: 1 | Boarding Group: 3 | Seat 12A</p>
+    <p>Name: John Smith</p>
+    <p>Person Type: Adult</p>
+    <p>Departs: 12/23/2022 9:00 AM</p>
+    <p>Arrives: 12/23/2022 12:00 PM</p>
+    <p>Boarding Begins: 8:15 AM</p>
+    <p>Boarding Ends: 8:45 AM</p>
+    <button class=\"btn btn-primary ms-1\">Print</button>
+    <button class=\"btn btn-primary\">Cancel Booking</button>
   </div>
-</div>
-  </body>
+  </div>
+</div>";
+    }
+    ?>
+  </div>
+</body>
+
 </html>

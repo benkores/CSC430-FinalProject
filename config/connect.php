@@ -20,4 +20,9 @@ function getAccountsDB() {
   $accounts = new Accounts();
   return $accounts;
 }
+
+function getBookingsDB() {
+  $bookings = new User_Bookings();
+  return $bookings;
+}
 ?>

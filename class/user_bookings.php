@@ -7,7 +7,7 @@ class User_Bookings
     public function __construct()
     {
         $this->conn = new Database();
-            $this->conn = $this->conn->getConnection();
+        $this->conn = $this->conn->getConnection();
     }
 
     public function addBooking(int $account_id, int $flight_id, int $seat_id, string $first_name, string $last_name, string $person_type)
@@ -26,16 +26,16 @@ class User_Bookings
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $booking = array();
             array_push($booking, $row['flight_id']);
-            array_push($booking, $this->getColumnFromFlights($row['flight_id'],"departure_id"));
-            array_push($booking, $this->getColumnFromFlights($row['flight_id'],"arrival_id"));
+            array_push($booking, $this->getColumnFromFlights($row['flight_id'], "departure_id"));
+            array_push($booking, $this->getColumnFromFlights($row['flight_id'], "arrival_id"));
             array_push($booking, $row['first_name']);
-            array_push($booking, $$row['last_name']);
-            array_push($booking, $$row['person_type']);
-            array_push($booking, $this->getColumnFromFlights($row['flight_id'],"gate"));
-            array_push($booking, $this->getColumnFromFlights($row['flight_id'],"terminal"));
-            array_push($booking, $this->getColumnFromFlights($row['flight_id'],"boarding_begins"));
-            array_push($booking, $this->getColumnFromFlights($row['flight_id'],"boarding_ends"));
-            $seat_type = $this->getColumnFromFlightSeats("seat_type",$row['$seat_id']);
+            array_push($booking, $row['last_name']);
+            array_push($booking, $row['person_type']);
+            array_push($booking, $this->getColumnFromFlights($row['flight_id'], "gate"));
+            array_push($booking, $this->getColumnFromFlights($row['flight_id'], "terminal"));
+            array_push($booking, $this->getColumnFromFlights($row['flight_id'], "boarding_begins"));
+            array_push($booking, $this->getColumnFromFlights($row['flight_id'], "boarding_ends"));
+            $seat_type = $this->getColumnFromFlightSeats("seat_type", $row['seat_id']);
             if ($seat_type == "first") {
                 array_push($booking, 1);
             } else if ($seat_type = "business") {
@@ -43,28 +43,30 @@ class User_Bookings
             } else {
                 array_push($booking, 3);
             }
-            array_push($booking, $this->getColumnFromFlightSeats("seat",$row['seat']));
+            array_push($booking, $this->getColumnFromFlightSeats("seat", $row['seat_id']));
             array_push($bookings, $booking);
         }
         return $bookings;
     }
 
-    public function getColumnFromFlights(int $flight_id, string $column) {
+    public function getColumnFromFlights(int $flight_id, string $column)
+    {
         $sqlQuery = "SELECT $column FROM FLIGHTS WHERE ID=$flight_id";
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->execute();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $value = $row['$column'];
+            $value =  `$row[$column]`;
         }
         return $value;
     }
 
-    public function getColumnFromFlightSeats(string $column, int $seat_id) {
+    public function getColumnFromFlightSeats(string $column, int $seat_id)
+    {
         $sqlQuery = "SELECT $column FROM FLIGHT_SEATS WHERE SEAT_ID=$seat_id";
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->execute();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $value = $row['$column'];
+            $value = `$row[$column]`;
         }
         return $value;
     }
