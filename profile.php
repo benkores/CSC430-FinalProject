@@ -63,7 +63,7 @@ if (isset($_SESSION['AccountID'])) {
                 </script>
               <br>
               <p>Username: <?php echo $_SESSION['Username'] ?></p>
-              <p>Password: **********  <button id="button1" onclick="openChange()" class="btn btn-danger ms-2">Change</button></p>
+              <p>Password: *********  <button id="button1" onclick="openChange()" class="btn btn-danger ms-2">Change</button></p>
 
               <form action="" method="POST" id="pwd_chng" style="display: none">
               <p>Old password: <input type="text"/></p>
