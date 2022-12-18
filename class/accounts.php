@@ -59,6 +59,19 @@ class Accounts
         }
     }
 
+    public function updateAccountPwd(string $username, string $pwd)
+    {
+        $sqlQuery = "UPDATE ACCOUNTS SET PASSWORD ='$pwd' WHERE USERNAME='$username'";
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function getAccountID(string $username) {
         $sqlQuery = "SELECT * FROM ACCOUNTS WHERE USERNAME='$username'";
         $stmt = $this->conn->prepare($sqlQuery);

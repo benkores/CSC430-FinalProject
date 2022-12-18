@@ -55,14 +55,20 @@ if (isset($_SESSION['AccountID'])) {
             <div class="card-body">
               <a href="/boarding_passes.php">View Boarding Passes</a>
               <br>
+              <script>
+                function openChange() {
+                  document.getElementById('pwd_chng').style.display = 'block';
+                  document.getElementById('button1').style.display = 'none';
+                }
+                </script>
               <br>
               <p>Username: <?php echo $_SESSION['Username'] ?></p>
-              <p>Password: **********  <button class="btn btn-danger ms-2">Change</button></p>
-              <br>
-              <p> Payment Methods:</p>
-              <p>VISA 1234      <button class="btn btn-danger ms-2">Delete</button></p></p>
-              <p>Discover 5678     <button class="btn btn-danger ms-2">Delete</button></p></p>
-              <br>
+              <p>Password: **********  <button id="button1" onclick="openChange()" class="btn btn-danger ms-2">Change</button></p>
+
+              <form action="" method="POST" id="pwd_chng" style="display: none">
+              <p>Old password: <input type="text"/></p>
+              <p>New password: <input type="text"/> <button type="submit" class="btn btn-danger ms-2">Change</button></p>
+              </form>
               <br>
             </div>
           </div>
