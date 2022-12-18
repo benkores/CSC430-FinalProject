@@ -5,6 +5,7 @@ if (isset($_SESSION['AccountID'])) {
   $_SESSION['login'] = "Logout";
 } else {
   $_SESSION['login'] = "Login";
+header("Location: login_register.php");
 }
 if (isset($_POST['submit'])) {
   getBookingsDB()->deleteBooking(($_POST['booking_id']));
