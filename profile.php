@@ -53,12 +53,10 @@ if (isset($_SESSION['AccountID'])) {
         <div class="col-md-15">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Profile (John Smith)</h5>
-              
               <a href="/boarding_passes.php">View Boarding Passes</a>
               <br>
               <br>
-              <p>Username: johnsmith1234@aol.com  <button class="btn btn-danger ms-2">Change</button></p>
+              <p>Username: <?php echo $_SESSION['Username'] ?></p>
               <p>Password: **********  <button class="btn btn-danger ms-2">Change</button></p>
               <br>
               <p> Payment Methods:</p>
