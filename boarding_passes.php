@@ -5,7 +5,6 @@ if (isset($_SESSION['AccountID'])) {
   $_SESSION['login'] = "Logout";
 } else {
   $_SESSION['login'] = "Login";
-header("Location: login_register.php");
 }
 if (isset($_POST['submit'])) {
   getBookingsDB()->deleteBooking(($_POST['booking_id']));
@@ -56,7 +55,7 @@ if (isset($_POST['submit'])) {
     </nav>
   </div>
   <div class="wrapper">
-    <div class="d-flex justify-content-center">
+    <div id='passcard' class="d-flex justify-content-center">
       <button class="btn btn-danger ms-1 mb-2 text-center" onClick="window.print()">Print Boarding Passes</button>
     </div>
     <?php
