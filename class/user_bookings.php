@@ -48,6 +48,7 @@ class User_Bookings
             array_push($booking, $this->getColumnFromFlights($row['flight_id'], "departure_time"));
             array_push($booking, $this->getColumnFromFlights($row['flight_id'], "arrival_date"));
             array_push($booking, $this->getColumnFromFlights($row['flight_id'], "arrival_time"));
+            array_push($booking, $row['id']);
             array_push($bookings, $booking);
         }
         return $bookings;

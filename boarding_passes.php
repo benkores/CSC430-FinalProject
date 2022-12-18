@@ -56,7 +56,7 @@ if (isset($_SESSION['AccountID'])) {
     $user_bookings = getBookingsDB()->getUserBookings($_SESSION['AccountID']);
     foreach ($user_bookings as $user_booking) {
       echo "<div class=\"row\">";
-      echo "<div class=\"card mb-3\">
+      echo "<div class=\"card mb-3\" id=\"boarding-pass-" . $user_booking[16] . "\">
     <div class=\"card-body\">
     <h5 class=\"card-title\">" . $user_booking[1] . " to " . $user_booking[2] . "</h5>
     <p class=\"card-text\">Gate: " . $user_booking[6] . " | Terminal: " . $user_booking[7] . " | Boarding Group: " . $user_booking[10] . " | Seat: " . $user_booking[11] . "</p>
@@ -66,15 +66,13 @@ if (isset($_SESSION['AccountID'])) {
     <p>Arrives: " . $user_booking[14] . "     " . $user_booking[15] . "</p>
     <p>Boarding Begins: " . $user_booking[8] . "</p>
     <p>Boarding Ends: " . $user_booking[9] . "</p>
-    <button class=\"btn btn-primary ms-1\">Print</button>
+    <button class=\"btn btn-primary ms-1\" onClick=\"window.print()\">Print</button>
     <button class=\"btn btn-primary\">Cancel Booking</button>
     </div>
     </div>
     </div>";
     }
-
     ?>
   </div>
 </body>
-
 </html>
