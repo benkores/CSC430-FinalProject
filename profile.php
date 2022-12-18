@@ -101,7 +101,7 @@ if (isset($_POST['submit'])) {
 
               <form action="" method="POST" id="pwd_chng" style="display: none">
               <p>Old password: <input name="old_pwd" type="text"/></p>
-              <p>New password:<input name="new_pwd" type="text"/> <button type="submit" name="submit" class="btn btn-danger ms-2">Submit</button><button onclick="closeChange()" class="btn btn-danger ms-2">Cancel</button></p>
+              <p>New password:<input name="new_pwd" type="text"/><button type="submit" name="submit" class="btn btn-danger ms-2">Submit</button><button onclick="closeChange()" class="btn btn-danger ms-2">Cancel</button></p>
               </form>
               <p id="chng_msg"></p>
               <br>
