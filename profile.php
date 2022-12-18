@@ -31,6 +31,7 @@ if (isset($_POST['submit'])) {
     unset($_SESSION['AccountID']);
     unset($_SESSION['Username']);
     $_SESSION['login'] = "Login";
+    header("Refresh:2; url=login_register.php");
   }
 }
 ?>
