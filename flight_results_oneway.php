@@ -7,7 +7,8 @@ if (isset($_SESSION['AccountID'])) {
   $_SESSION['login'] = "Login";
 }
 if (isset($_POST['submit'])) {
-  $_SESSION['flight_id']  = $_POST['flight_id'];
+  if(isset($_SESSION['AccountID'])) {
+    $_SESSION['flight_id']  = $_POST['flight_id'];
   $_SESSION['dep_time'] = $flight[4];
   $_SESSION['arrive_date'] = $flight[5];
   $_SESSION['arrive_time'] = $flight[6];
@@ -27,6 +28,16 @@ if (isset($_POST['submit'])) {
   }
   header("Location: book.php");
   exit();
+  } else {
+    echo "<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const errorElement = document.getElementById('bookmsg');
+      errorElement.style.color = \"#FF0000\";
+      errorElement.innerHTML = \"You must be logged in to book a flight.\";
+  });
+    alert('You must be logged in to book a flight.');
+      </script>";
+  }
 }
 ?>
 <!doctype html>
@@ -72,7 +83,6 @@ if (isset($_POST['submit'])) {
       </div>
     </nav>
   </div>
-
   <?php
   $flights = getFlightsDB()->getFlights($_SESSION["from"], $_SESSION["to"], $_SESSION["dep_date"]);
   foreach ($flights as $flight) {
@@ -118,6 +128,7 @@ if (isset($_POST['submit'])) {
     </table>
     <input type='hidden' name='flight_id' value='$flight[0]'>
     <input type=\"submit\" id='submit' name='submit' value='Book' class=\"btn btn-primary\"></button>
+    <div id='bookmsg'></div>
       </form>
   </div>";
   }
