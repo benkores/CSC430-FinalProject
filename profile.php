@@ -4,10 +4,15 @@ require_once 'config/connect.php';
 if (isset($_SESSION['AccountID'])) {
   $_SESSION['login'] = "Logout";
 } else {
-  echo "<script>
-    document.getElementById('profilecard').innerHTML = 'You must be logged in to view this page.';
-      </script>";
   $_SESSION['login'] = "Login";
+
+  echo "<script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const errorElement = document.getElementById('profilecard');
+        errorElement.style.color = \"#FF0000\";
+        errorElement.innerHTML = \"You must be logged in to view this page.\";
+    });
+        </script>";
 }
 
 if (isset($_POST['submit'])) {
