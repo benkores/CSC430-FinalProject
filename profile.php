@@ -4,7 +4,34 @@ require_once 'config/connect.php';
 if (isset($_SESSION['AccountID'])) {
   $_SESSION['login'] = "Logout";
 } else {
+  echo "<script>
+    document.getElementById('profilecard').innerHTML = 'You must be logged in to view this page.';
+      </script>";
   $_SESSION['login'] = "Login";
+}
+
+if (isset($_POST['submit'])) {
+  if(!getAccountsDB()->authenticateAccount($_SESSION['Username'], $_POST['old_pwd'])) {
+    echo "<script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const errorElement = document.getElementById('chng_msg');
+        errorElement.style.color = \"#FF0000\";
+        errorElement.innerHTML = \"Old password entered incorrectly. Please try again.\";
+    });
+        </script>";
+  } else {
+    getAccountsDB()->updateAccountPwd($_SESSION['Username'], $_POST['new_pwd']);
+    echo "<script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const errorElement = document.getElementById('chng_msg');
+          errorElement.style.color = \"#228C22\";
+          errorElement.innerHTML = \"Password changed successfully! Please log in again.\";
+      });
+          </script>";
+    unset($_SESSION['AccountID']);
+    unset($_SESSION['Username']);
+    $_SESSION['login'] = "Login";
+  }
 }
 ?>
 <!doctype html>
@@ -52,7 +79,7 @@ if (isset($_SESSION['AccountID'])) {
       <div class="row">
         <div class="col-md-15">
           <div class="card">
-            <div class="card-body">
+            <div id="profilecard" class="card-body">
               <a href="/boarding_passes.php">View Boarding Passes</a>
               <br>
               <script>
@@ -60,15 +87,23 @@ if (isset($_SESSION['AccountID'])) {
                   document.getElementById('pwd_chng').style.display = 'block';
                   document.getElementById('button1').style.display = 'none';
                 }
+
+                function closeChange() {
+                  document.getElementById('pwd_chng').style.display = 'none';
+                  document.getElementById('button1').style.display = 'block';
+                }
                 </script>
               <br>
+              <div id='userInfo'>
               <p>Username: <?php echo $_SESSION['Username'] ?></p>
-              <p>Password: *********  <button id="button1" onclick="openChange()" class="btn btn-danger ms-2">Change</button></p>
+              <p>Password: ********* <button id="button1" onclick="openChange()" class="btn btn-danger ms-2">Change</button></p>
+              </div>
 
               <form action="" method="POST" id="pwd_chng" style="display: none">
-              <p>Old password: <input type="text"/></p>
-              <p>New password: <input type="text"/> <button type="submit" class="btn btn-danger ms-2">Change</button></p>
+              <p>Old password: <input name="old_pwd" type="text"/></p>
+              <p>New password:<input name="new_pwd" type="text"/> <button type="submit" name="submit" class="btn btn-danger ms-2">Submit</button><button onclick="closeChange()" class="btn btn-danger ms-2">Cancel</button></p>
               </form>
+              <p id="chng_msg"></p>
               <br>
             </div>
           </div>
