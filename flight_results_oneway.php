@@ -6,6 +6,28 @@ if (isset($_SESSION['AccountID'])) {
 } else {
   $_SESSION['login'] = "Login";
 }
+if (isset($_POST['submit'])) {
+  $_SESSION['flight_id']  = $_POST['flight_id'];
+  $_SESSION['dep_time'] = $flight[4];
+  $_SESSION['arrive_date'] = $flight[5];
+  $_SESSION['arrive_time'] = $flight[6];
+  $_SESSION['gate'] = $flight[7];
+  $_SESSION['terminal'] = $flight[8];
+  $_SESSION['boarding_begins'] = $flight[9];
+  $_SESSION['boarding_ends'] = $flight[10];
+  if ($_SESSION["class"] == "first") {
+    $_SESSION['number_of_seats'] = $flight[11];
+    $_SESSION['price'] = $flight[14];
+  } else if ($_SESSION["class"] == "business") {
+    $_SESSION['number_of_seats'] = $flight[12];
+    $_SESSION['price'] = $flight[15];
+  } else {
+    $_SESSION['number_of_seats'] = $flight[13];
+    $_SESSION['price'] = $flight[16];
+  }
+  header("Location: book.php");
+  exit();
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -55,6 +77,7 @@ if (isset($_SESSION['AccountID'])) {
   $flights = getFlightsDB()->getFlights($_SESSION["from"], $_SESSION["to"], $_SESSION["dep_date"]);
   foreach ($flights as $flight) {
     echo "<div class=\"wrapper\">
+    <form action='' method='POST'>
     <h5 for=\"result\"><b>Flight ID # " . $flight[0] . "  " . $_SESSION["from"] . "-->" . $_SESSION["to"] . "</b></h5></br>
     <table>
       <tr>
@@ -93,8 +116,9 @@ if (isset($_SESSION['AccountID'])) {
         </td>
       </tr>
     </table>
-      <button type=\"submit\" id='book_id_$flight[0]' name='book_id_$flight[0]' class=\"btn btn-primary\">Book</button>
-    </a>
+    <input type='hidden' name='flight_id' value='$flight[0]'>
+    <input type=\"submit\" id='submit' name='submit' value='Book' class=\"btn btn-primary\"></button>
+      </form>
   </div>";
   }
   ?>
