@@ -4,10 +4,15 @@ require_once 'config/connect.php';
 if (isset($_SESSION['AccountID'])) {
   $_SESSION['login'] = "Logout";
 } else {
-  echo "<script>
-    document.getElementById('profilecard').innerHTML = 'You must be logged in to view this page.';
-      </script>";
   $_SESSION['login'] = "Login";
+
+  echo "<script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const errorElement = document.getElementById('profilecard');
+        errorElement.style.color = \"#FF0000\";
+        errorElement.innerHTML = \"You must be logged in to view this page.\";
+    });
+        </script>";
 }
 
 if (isset($_POST['submit'])) {
@@ -31,6 +36,7 @@ if (isset($_POST['submit'])) {
     unset($_SESSION['AccountID']);
     unset($_SESSION['Username']);
     $_SESSION['login'] = "Login";
+    header("Refresh:2; url=login_register.php");
   }
 }
 ?>
@@ -101,7 +107,7 @@ if (isset($_POST['submit'])) {
 
               <form action="" method="POST" id="pwd_chng" style="display: none">
               <p>Old password: <input name="old_pwd" type="text"/></p>
-              <p>New password:<input name="new_pwd" type="text"/> <button type="submit" name="submit" class="btn btn-danger ms-2">Submit</button><button onclick="closeChange()" class="btn btn-danger ms-2">Cancel</button></p>
+              <p>New password:<input name="new_pwd" type="text"/><button type="submit" name="submit" class="btn btn-danger ms-2">Submit</button><button onclick="closeChange()" class="btn btn-danger ms-2">Cancel</button></p>
               </form>
               <p id="chng_msg"></p>
               <br>
