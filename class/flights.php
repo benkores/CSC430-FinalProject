@@ -54,4 +54,15 @@
             }
             return $cost;
         }
+
+        public function getColumnFromFlights(int $flight_id, string $column)
+    {
+        $sqlQuery = "SELECT $column FROM FLIGHTS WHERE ID=$flight_id";
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->execute();
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $value =  $row[$column];
+        }
+        return $value;
+    }
     }

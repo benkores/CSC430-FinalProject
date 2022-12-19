@@ -9,23 +9,23 @@ if (isset($_SESSION['AccountID'])) {
 if (isset($_POST['submit'])) {
   if(isset($_SESSION['AccountID'])) {
     $_SESSION['flight_id']  = $_POST['flight_id'];
-  $_SESSION['dep_time'] = $flight[4];
-  $_SESSION['arrive_date'] = $flight[5];
-  $_SESSION['arrive_time'] = $flight[6];
-  $_SESSION['gate'] = $flight[7];
-  $_SESSION['terminal'] = $flight[8];
-  $_SESSION['boarding_begins'] = $flight[9];
-  $_SESSION['boarding_ends'] = $flight[10];
-  if ($_SESSION["class"] == "first") {
-    $_SESSION['number_of_seats'] = $flight[11];
-    $_SESSION['price'] = $flight[14];
-  } else if ($_SESSION["class"] == "business") {
-    $_SESSION['number_of_seats'] = $flight[12];
-    $_SESSION['price'] = $flight[15];
-  } else {
-    $_SESSION['number_of_seats'] = $flight[13];
-    $_SESSION['price'] = $flight[16];
-  }
+    $_SESSION['dep_time'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'],"departure_time");
+    $_SESSION['arrive_date'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'],"arrival_date");
+    $_SESSION['arrive_time'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "arrival_time");
+    $_SESSION['gate'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "gate");
+    $_SESSION['terminal'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "terminal");
+    $_SESSION['boarding_begins'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "boarding_begins");
+    $_SESSION['boarding_ends'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "boarding_ends");
+    if ($_SESSION["class"] == "first") {
+      $_SESSION['number_of_seats'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "number_of_first_class_seats");
+      $_SESSION['price'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "first_cost");
+    } else if ($_SESSION["class"] == "business") {
+      $_SESSION['number_of_seats'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "number_of_business_class_seats");
+      $_SESSION['price'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "business_cost");
+    } else {
+      $_SESSION['number_of_seats'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "number_of_economy_seats");
+      $_SESSION['price'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "economy_cost");
+    }
   header("Location: book.php");
   exit();
   } else {

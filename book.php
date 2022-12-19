@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
 <div class="wrapper">
   <form method='POST'>
     <?php
-    $seats = getSeatsDB()->getFlightSeats($_SESSION['flight_id']);
+    $seats = getSeatsDB()->getFlightSeats($_SESSION['class']);
     for ($i = 1; $i <= $_SESSION['travelers']; $i++) {
       echo "
       <h5><b>Traveler $i</b></h5><br>
@@ -82,30 +82,29 @@ if (isset($_POST['submit'])) {
           <input type='text' class='form-control' id='lname_$i' name='lname_$i' style='width:25%; height:25%;' required>
         </div>
         </br>
-        <label for='person_type_$i'>Person Type*:</label>
+        <label for='person_type_$i' class='me-3'>Person Type*:</label>
         <select name='person_type_$i' id='person_type_$i' required>
           <option value='adult'>Adult</option>
           <option value='child'>Child</option>
         </select>
         <br><br>
-        <p>Choose a seat*:</p>";
-      $counter = 0;
-      echo "<div class='row'>";
+        <label for='seat_$i' class='me-3'>Choose a seat*:</label>";
+      echo "<select name='seat_$i' id='seat_$i' required>";
+      echo "<option value=''>Choose one</option>";
       foreach ($seats as $seat) {
-        echo "
-            <div class='col-2'>
-              <input type='radio' id='seat_$i' name='seat_$i' value='$seat[2]' required>
-              <label for='$seat[2]'>$seat[2]</label><br>
-            </div>
-          ";
-        $counter++;
-        if ($counter % 6 == 0) {
-          echo "</div><div class='row'>";
+        echo "<option value='$seat[2]'>$seat[2] - " . ($_SESSION['class'])."</option>";
         }
+      echo "</select><br><br>";
       }
-      echo "</div>
-        </br></br></br>";
-    }
+      if (isset($_SESSION['flight_id_return'])) {
+      echo  "<label for='seat_$i' class='me-3'>Choose a seat (return-trip)*:</label>";
+      echo "<select name='seat_$i' id='seat_$i' required>";
+      echo "<option value=''>Choose one</option>";
+      foreach ($seats as $seat) {
+        echo "<option value='$seat[2]'>$seat[2] - " . ($_SESSION['class'])."</option>";
+        }
+      echo "</select><br><br>";
+      }
     ?>
     <button type='submit' name='submit' class='btn btn-primary'>Continue</button>
     <a href='./index.php'><button class='btn btn-primary me-2'>Cancel</button></a>

@@ -11,9 +11,9 @@ class Flight_Seats
             $this->conn = $this->conn->getConnection();
     }
 
-    public function getFlightSeats(int $flight_id)
+    public function getFlightSeats(string $class)
     {
-        $sqlQuery = "SELECT * FROM FLIGHT_SEATS";
+        $sqlQuery = "SELECT * FROM FLIGHT_SEATS WHERE SEAT_TYPE='$class'";
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->execute();
         $seats = array();
