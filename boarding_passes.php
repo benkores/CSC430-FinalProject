@@ -5,6 +5,15 @@ if (isset($_SESSION['AccountID'])) {
   $_SESSION['login'] = "Logout";
 } else {
   $_SESSION['login'] = "Login";
+
+  echo "<script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const errorElement = document.getElementById('passcard');
+        errorElement.style.color = \"#FF0000\";
+        errorElement.innerHTML = \"You must be logged in to view this page.\";
+    });
+        </script>";
+  header("Refresh:1; url=login_register.php");
 }
 if (isset($_POST['submit'])) {
   getBookingsDB()->deleteBooking(($_POST['booking_id']));
