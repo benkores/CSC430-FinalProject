@@ -7,6 +7,15 @@ if (isset($_SESSION['AccountID'])) {
   $_SESSION['login'] = "Login";
 }
 $travelers = $_SESSION['traveler_info'];
+$fare;
+foreach ($travelers as $traveler) {
+  $fare += $_SESSION['price'];
+  if (isset($_SESSION['flight_id_return'])) {
+    $fare += $_SESSION['price_return'];
+  }
+}
+$taxes_fees = ($fare * 0.0875) + 20;
+$total = $fare + $taxes_fees;
 if (isset($_POST['submit'])) {
   foreach($travelers as $traveler) {
     getBookingsDB()->addBooking($_SESSION['AccountID'], $_SESSION['flight_id'], getSeatsDB()->getSeatID($traveler[3]), $traveler[0], $traveler[1], $traveler[2]);
@@ -118,9 +127,9 @@ if (isset($_POST['submit'])) {
         </td>
         <td>
           <ul class="float-right">
-            <li>$200.00</li>
-            <li>$20.00</li>
-            <li>$220.00</li>
+            <li>$<?php echo $fare?>.00</li>
+            <li>$<?php echo $taxes_fees?>.00</li>
+            <li>$<?php echo $total?>.00</li>
           </ul>
         </td>
       </tr>
