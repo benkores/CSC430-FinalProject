@@ -7,10 +7,10 @@ if (isset($_SESSION['AccountID'])) {
   $_SESSION['login'] = "Login";
 }
 if (isset($_POST['submit'])) {
-  if(isset($_SESSION['AccountID'])) {
-    $_SESSION['flight_id']  = $_POST['flight_id'];
-    $_SESSION['dep_time'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'],"departure_time");
-    $_SESSION['arrive_date'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'],"arrival_date");
+  if (isset($_SESSION['AccountID'])) {
+    $_SESSION['flight_id'] = $_POST['flight_id'];
+    $_SESSION['dep_time'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "departure_time");
+    $_SESSION['arrive_date'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "arrival_date");
     $_SESSION['arrive_time'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "arrival_time");
     $_SESSION['gate'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "gate");
     $_SESSION['terminal'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "terminal");
@@ -26,9 +26,9 @@ if (isset($_POST['submit'])) {
       $_SESSION['number_of_seats'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "number_of_economy_seats");
       $_SESSION['price'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "economy_cost");
     }
-    $_SESSION['flight_id_return']  = $_POST['flight_id_return'];
-    $_SESSION['dep_time_return'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id_return'],"departure_time");
-    $_SESSION['arrive_date_return'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id_return'],"arrival_date");
+    $_SESSION['flight_id_return'] = $_POST['flight_id_return'];
+    $_SESSION['dep_time_return'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id_return'], "departure_time");
+    $_SESSION['arrive_date_return'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id_return'], "arrival_date");
     $_SESSION['arrive_time_return'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id_return'], "arrival_time");
     $_SESSION['gate_return'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id_return'], "gate");
     $_SESSION['terminal_return'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id_return'], "terminal");
@@ -102,9 +102,9 @@ if (isset($_POST['submit'])) {
     </nav>
   </div>
   <?php
-    $flights = getFlightsDB()->getFlights($_SESSION["from"], $_SESSION["to"], $_SESSION["dep_date"]);
-    foreach ($flights as $flight) {
-      echo "<div class=\"wrapper\">
+  $flights = getFlightsDB()->getFlights($_SESSION["from"], $_SESSION["to"], $_SESSION["dep_date"]);
+  foreach ($flights as $flight) {
+    echo "<div class=\"wrapper\">
       <form action='' method='POST'>
     <h5 for=\"result\"><b>Flight ID # " . $flight[0] . "  " . $_SESSION["from"] . "-->" . $_SESSION["to"] . "</b></h5></br>
     <table>
@@ -129,24 +129,24 @@ if (isset($_POST['submit'])) {
             <li>" . $flight[8] . "</li>
             <li>" . $flight[9] . "</li>
             <li>" . $flight[10] . "</li>";
-      if ($_SESSION["class"] == "first") {
-        echo "<li>" . $flight[11] . " </li>";
-        echo "<li>$" . $flight[14] . "</li>";
-      } else if ($_SESSION["class"] == "business") {
-        echo "<li>" . $flight[12] . " </li>";
-        echo "<li>$" . $flight[15] . "</li>";
-      } else {
-        echo "<li>" . $flight[13] . " </li>";
-        echo "<li>$" . $flight[16] . "</li>";
-      }
-      echo "
+    if ($_SESSION["class"] == "first") {
+      echo "<li>" . $flight[11] . " </li>";
+      echo "<li>$" . $flight[14] . "</li>";
+    } else if ($_SESSION["class"] == "business") {
+      echo "<li>" . $flight[12] . " </li>";
+      echo "<li>$" . $flight[15] . "</li>";
+    } else {
+      echo "<li>" . $flight[13] . " </li>";
+      echo "<li>$" . $flight[16] . "</li>";
+    }
+    echo "
           </ul>
         </td>
       </tr>
     </table>";
-      $flights_return = getFlightsDB()->getFlights($_SESSION["to"], $_SESSION["from"], $_SESSION["return_date"]);
-      foreach ($flights_return as $flight_return) {
-        echo "
+    $flights_return = getFlightsDB()->getFlights($_SESSION["to"], $_SESSION["from"], $_SESSION["return_date"]);
+    foreach ($flights_return as $flight_return) {
+      echo "
     <h5 for=\"result\"><b>Flight ID # " . $flight_return[0] . "  " . $_SESSION["to"] . "-->" . $_SESSION["from"] . "</b></h5></br>
     <table>
       <tr>
@@ -170,31 +170,31 @@ if (isset($_POST['submit'])) {
             <li>" . $flight_return[8] . "</li>
             <li>" . $flight_return[9] . "</li>
             <li>" . $flight_return[10] . "</li>";
-        if ($_SESSION["class"] == "first") {
-          echo "<li>" . $flight_return[11] . " </li>";
-          echo "<li>$" . $flight_return[14] . "</li>";
-        } else if ($_SESSION["class"] == "business") {
-          echo "<li>" . $flight_return[12] . " </li>";
-          echo "<li>$" . $flight_return[15] . "</li>";
-        } else {
-          echo "<li>" . $flight_return[13] . " </li>";
-          echo "<li>$" . $flight_return[16] . "</li>";
-        }
+      if ($_SESSION["class"] == "first") {
+        echo "<li>" . $flight_return[11] . " </li>";
+        echo "<li>$" . $flight_return[14] . "</li>";
+      } else if ($_SESSION["class"] == "business") {
+        echo "<li>" . $flight_return[12] . " </li>";
+        echo "<li>$" . $flight_return[15] . "</li>";
+      } else {
+        echo "<li>" . $flight_return[13] . " </li>";
+        echo "<li>$" . $flight_return[16] . "</li>";
+      }
       echo "
           </ul>
         </td>
       </tr>
     </table>";
-      }
-      echo "
+    }
+    echo "
       <input type='hidden' name='flight_id' value='$flight[0]'>
       <input type='hidden' name='flight_id_return' value='$flight_return[0]'>
       <input type=\"submit\" id='submit' name='submit' value='Book' class=\"btn btn-primary\"></button>
       <div id='bookmsg'></div>
         </form>
   </div>";
-    }
-    ?>
+  }
+  ?>
 </body>
 
 </html>

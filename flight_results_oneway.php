@@ -7,10 +7,10 @@ if (isset($_SESSION['AccountID'])) {
   $_SESSION['login'] = "Login";
 }
 if (isset($_POST['submit'])) {
-  if(isset($_SESSION['AccountID'])) {
-    $_SESSION['flight_id']  = $_POST['flight_id'];
-    $_SESSION['dep_time'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'],"departure_time");
-    $_SESSION['arrive_date'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'],"arrival_date");
+  if (isset($_SESSION['AccountID'])) {
+    $_SESSION['flight_id'] = $_POST['flight_id'];
+    $_SESSION['dep_time'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "departure_time");
+    $_SESSION['arrive_date'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "arrival_date");
     $_SESSION['arrive_time'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "arrival_time");
     $_SESSION['gate'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "gate");
     $_SESSION['terminal'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "terminal");
@@ -26,8 +26,8 @@ if (isset($_POST['submit'])) {
       $_SESSION['number_of_seats'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "number_of_economy_seats");
       $_SESSION['price'] = getFlightsDB()->getColumnFromFlights($_SESSION['flight_id'], "economy_cost");
     }
-  header("Location: book.php");
-  exit();
+    header("Location: book.php");
+    exit();
   } else {
     echo "<script>
     document.addEventListener('DOMContentLoaded', function () {

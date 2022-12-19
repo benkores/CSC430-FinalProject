@@ -16,17 +16,20 @@ function getFlightsDB()
   return $flights;
 }
 
-function getAccountsDB() {
+function getAccountsDB()
+{
   $accounts = new Accounts();
   return $accounts;
 }
 
-function getBookingsDB() {
+function getBookingsDB()
+{
   $bookings = new User_Bookings();
   return $bookings;
 }
 
-function getSeatsDB() {
+function getSeatsDB()
+{
   $seats = new Flight_Seats();
   return $seats;
 }

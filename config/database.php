@@ -9,7 +9,8 @@ class Database
 
     public $conn;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->conn = null;
         try {
             $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->database_name, $this->username, $this->password);
@@ -19,8 +20,9 @@ class Database
         }
         return $this->conn;
     }
-    
-    public function getConnection() {
+
+    public function getConnection()
+    {
         return $this->conn;
     }
 }

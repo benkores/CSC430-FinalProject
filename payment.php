@@ -17,7 +17,7 @@ foreach ($travelers as $traveler) {
 $taxes_fees = ($fare * 0.0875) + 20;
 $total = $fare + $taxes_fees;
 if (isset($_POST['submit'])) {
-  foreach($travelers as $traveler) {
+  foreach ($travelers as $traveler) {
     getBookingsDB()->addBooking($_SESSION['AccountID'], $_SESSION['flight_id'], getSeatsDB()->getSeatID($traveler[3]), $traveler[0], $traveler[1], $traveler[2]);
     if (isset($_SESSION['flight_id_return'])) {
       getBookingsDB()->addBooking($_SESSION['AccountID'], $_SESSION['flight_id_return'], getSeatsDB()->getSeatID($traveler[4]), $traveler[0], $traveler[1], $traveler[2]);
@@ -127,9 +127,15 @@ if (isset($_POST['submit'])) {
         </td>
         <td>
           <ul class="float-right">
-            <li>$<?php echo $fare?>.00</li>
-            <li>$<?php echo $taxes_fees?>.00</li>
-            <li>$<?php echo $total?>.00</li>
+            <li>$
+              <?php echo $fare ?>.00
+            </li>
+            <li>$
+              <?php echo $taxes_fees ?>.00
+            </li>
+            <li>$
+              <?php echo $total ?>.00
+            </li>
           </ul>
         </td>
       </tr>
@@ -176,35 +182,40 @@ if (isset($_POST['submit'])) {
       <div class="form-group row">
         <label for="billing_address" class="col-sm-3 col-form-label">Address*: </label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="billing_address" name="billing_address" required autocomplete="one-time-code">
+          <input type="text" class="form-control" id="billing_address" name="billing_address" required
+            autocomplete="one-time-code">
         </div>
       </div><br>
 
       <div class="form-group row">
         <label for="billing_city" class="col-sm-3 col-form-label"> City*: </label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="billing_city" name="billing_city" required autocomplete="one-time-code">
+          <input type="text" class="form-control" id="billing_city" name="billing_city" required
+            autocomplete="one-time-code">
         </div>
       </div><br>
 
       <div class="form-group row">
         <label for="billing_state" class="col-sm-3 col-form-label">State*: </label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="billing_state" name="billing_state" required autocomplete="one-time-code">
+          <input type="text" class="form-control" id="billing_state" name="billing_state" required
+            autocomplete="one-time-code">
         </div>
       </div><br>
 
       <div class="form-group row">
         <label for="billing_zip" class="col-sm-3 col-form-label">ZIP*: </label>
         <div class="col-sm-5">
-          <input type="number" class="form-control" id="billing_zip" name="billing_zip" required autocomplete="one-time-code">
+          <input type="number" class="form-control" id="billing_zip" name="billing_zip" required
+            autocomplete="one-time-code">
         </div>
       </div><br>
 
       <div class="form-group row">
         <label for="billing_country" class="col-sm-3 col-form-label"> Country*: </label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="billing_country" name="billing_country" required autocomplete="one-time-code">
+          <input type="text" class="form-control" id="billing_country" name="billing_country" required
+            autocomplete="one-time-code">
         </div>
       </div>
       </br></br></br>

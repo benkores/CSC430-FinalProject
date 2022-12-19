@@ -54,7 +54,8 @@ class User_Bookings
         return $bookings;
     }
 
-    public function deleteBooking(int $booking_id) {
+    public function deleteBooking(int $booking_id)
+    {
         $sqlQuery = "DELETE FROM USER_BOOKINGS WHERE ID=$booking_id";
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->execute();
@@ -66,7 +67,7 @@ class User_Bookings
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->execute();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $value =  $row[$column];
+            $value = $row[$column];
         }
         return $value;
     }

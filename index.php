@@ -9,41 +9,41 @@ if (isset($_SESSION['AccountID'])) {
 if (isset($_POST['submit'])) {
   $_SESSION["from"] = $_POST['from'];
   $_SESSION["to"] = $_POST['to'];
-    $_SESSION["dep_date"] = $_POST['dept_date'];
-    $_SESSION["travelers"] = $_POST['travelers'];
-    $_SESSION["class"] = $_POST['class'];
-    $option = $_POST['inlineRadioOptions'];
-    $flights = getFlightsDB()->getFlights($_SESSION["from"], $_SESSION["to"], $_SESSION["dep_date"]);
-    if ($option == "option1") {
-      if (count($flights) == 0) {
-        echo "<script>
+  $_SESSION["dep_date"] = $_POST['dept_date'];
+  $_SESSION["travelers"] = $_POST['travelers'];
+  $_SESSION["class"] = $_POST['class'];
+  $option = $_POST['inlineRadioOptions'];
+  $flights = getFlightsDB()->getFlights($_SESSION["from"], $_SESSION["to"], $_SESSION["dep_date"]);
+  if ($option == "option1") {
+    if (count($flights) == 0) {
+      echo "<script>
       document.addEventListener('DOMContentLoaded', function () {
         const errorElement = document.getElementById('error_msg');
         errorElement.style.color = \"#FF0000\";
         errorElement.innerHTML = \"No flight results found\";
     });
         </script>";
-      } else {
-        header("Location: flight_results_oneway.php");
-        exit();
-      }
     } else {
-      $_SESSION["return_date"] = $_POST['return_date'];
-      $flights_return = getFlightsDB()->getFlights($_SESSION["to"], $_SESSION["from"], $_SESSION["return_date"]);
-      if (count($flights) == 0 || count($flights_return) == 0) {
-        echo "<script>
+      header("Location: flight_results_oneway.php");
+      exit();
+    }
+  } else {
+    $_SESSION["return_date"] = $_POST['return_date'];
+    $flights_return = getFlightsDB()->getFlights($_SESSION["to"], $_SESSION["from"], $_SESSION["return_date"]);
+    if (count($flights) == 0 || count($flights_return) == 0) {
+      echo "<script>
       document.addEventListener('DOMContentLoaded', function () {
         const errorElement = document.getElementById('error_msg');
         errorElement.style.color = \"#FF0000\";
         errorElement.innerHTML = \"No flight results found\";
     });
         </script>";
-      } else {
-        header("Location: flight_results_roundtrip.php");
-        exit();
-      }
+    } else {
+      header("Location: flight_results_roundtrip.php");
+      exit();
     }
   }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -176,7 +176,7 @@ if (isset($_POST['submit'])) {
       element.classList.remove("invisible");
       element.classList.add("visible");
       var element2 = document.getElementById("return_date");
-     element2.required = true;
+      element2.required = true;
     }
   }
 </script>

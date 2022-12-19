@@ -72,7 +72,8 @@ class Accounts
         }
     }
 
-    public function getAccountID(string $username) {
+    public function getAccountID(string $username)
+    {
         $sqlQuery = "SELECT * FROM ACCOUNTS WHERE USERNAME='$username'";
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->execute();
