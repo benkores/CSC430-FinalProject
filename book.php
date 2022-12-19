@@ -95,15 +95,15 @@ if (isset($_POST['submit'])) {
         echo "<option value='$seat[2]'>$seat[2] - " . ($_SESSION['class'])."</option>";
         }
       echo "</select><br><br>";
-      }
       if (isset($_SESSION['flight_id_return'])) {
-      echo  "<label for='seat_$i' class='me-3'>Choose a seat (return-trip)*:</label>";
-      echo "<select name='seat_$i' id='seat_$i' required>";
-      echo "<option value=''>Choose one</option>";
-      foreach ($seats as $seat) {
-        echo "<option value='$seat[2]'>$seat[2] - " . ($_SESSION['class'])."</option>";
+        echo  "<label for='seat_$i' class='me-3'>Choose a seat (return-trip)*:</label>";
+        echo "<select name='seat_$i' id='seat_$i' required>";
+        echo "<option value=''>Choose one</option>";
+        foreach ($seats as $seat) {
+          echo "<option value='$seat[2]'>$seat[2] - " . ($_SESSION['class'])."</option>";
+          }
+        echo "</select><br><br>";
         }
-      echo "</select><br><br>";
       }
     ?>
     <button type='submit' name='submit' class='btn btn-primary'>Continue</button>
