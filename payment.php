@@ -176,35 +176,35 @@ if (isset($_POST['submit'])) {
       <div class="form-group row">
         <label for="billing_address" class="col-sm-3 col-form-label">Address*: </label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="billing_address" name="billing_address" required>
+          <input type="text" class="form-control" id="billing_address" name="billing_address" required autocomplete="one-time-code">
         </div>
       </div><br>
 
       <div class="form-group row">
         <label for="billing_city" class="col-sm-3 col-form-label"> City*: </label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="billing_city" name="billing_city" required>
+          <input type="text" class="form-control" id="billing_city" name="billing_city" required autocomplete="one-time-code">
         </div>
       </div><br>
 
       <div class="form-group row">
         <label for="billing_state" class="col-sm-3 col-form-label">State*: </label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="billing_state" name="billing_state" required>
+          <input type="text" class="form-control" id="billing_state" name="billing_state" required autocomplete="one-time-code">
         </div>
       </div><br>
 
       <div class="form-group row">
         <label for="billing_zip" class="col-sm-3 col-form-label">ZIP*: </label>
         <div class="col-sm-5">
-          <input type="number" class="form-control" id="billing_zip" name="billing_zip" required>
+          <input type="number" class="form-control" id="billing_zip" name="billing_zip" required autocomplete="one-time-code">
         </div>
       </div><br>
 
       <div class="form-group row">
         <label for="billing_country" class="col-sm-3 col-form-label"> Country*: </label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="billing_country" name="billing_country" required>
+          <input type="text" class="form-control" id="billing_country" name="billing_country" required autocomplete="one-time-code">
         </div>
       </div>
       </br></br></br>
