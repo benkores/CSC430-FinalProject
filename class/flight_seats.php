@@ -13,14 +13,13 @@ class Flight_Seats
 
     public function getFlightSeats(int $flight_id)
     {
-        $sqlQuery = "SELECT * FROM FLIGHT_SEATS WHERE FLIGHT_ID=$flight_id AND SEAT_BOOKED=false";
+        $sqlQuery = "SELECT * FROM FLIGHT_SEATS";
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->execute();
         $seats = array();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $seat = array();
-            array_push($seat, $row['flight_id']);
-            array_push($seat, $row['id']);
+            array_push($seat, $row['seat_id']);
             array_push($seat, $row['seat_type']);
             array_push($seat, $row['seat']);
             array_push($seats, $seat);

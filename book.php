@@ -68,44 +68,45 @@ if (isset($_POST['submit'])) {
 <div class="wrapper">
   <form method='POST'>
     <?php
-for ($i = 1; $i <= $_SESSION['travelers']; $i++) {
-  echo "<div class='col'>
-    <h5><b>Traveler $i</b></h5><br>
-      <div class='form-group row'>
-        <label for='fname_$i' class='col-sm-1 col-form-label'>First Name*: </label>
-        <input type='text' class='form-control' id='fname_$i' name='fname_$i' style='width:25%; height:25%;'>
-      </div>
-      </br>
-      <div class='form-group row'>
-        <label for='lname_$i' class='col-sm-1 col-form-label'>Last Name*:</label>
-        <input type='text' class='form-control' id='lname_$i' name='lname_$i' style='width:25%; height:25%;'>
-      </div>
-      </br>
-      <label for='person_type_$i'>Person Type*:</label>
-      <select name='person_type_$i' id='person_type_$i'>
-        <option value='adult'>Adult</option>
-        <option value='child'>Child</option>
-      </select>
-      <br><br>
-      <p>Choose a seat*:</p>
-      <input type='radio' id='seat_$i' name='seat_$i' value='21A'>
-      <label for='A'>21A</label><br>
-      <input type='radio' id='seat_$i' name='seat_$i' value='21B'>
-      <label for='B'>21B</label><br>
-      <input type='radio' id='seat_$i' name='seat_$i' value='21C'>
-      <label for='C'>21C</label><br>
-      <input type='radio' id='seat_$i' name='seat_$i' value='21D'>
-      <label for='D'>21D</label><br>
-      <input type='radio' id='seat_$i' name='seat_$i' value='21E'>
-      <label for='E'>21E</label><br>
-      <input type='radio' id='seat_$i' name='seat_$i' value='21F'>
-      <label for='F'>21F</label>
-
-
-      </br></br></br>
-  </div>";
-}
-?>
+    $seats = getSeatsDB()->getFlightSeats($_SESSION['flight_id']);
+    for ($i = 1; $i <= $_SESSION['travelers']; $i++) {
+      echo "
+      <h5><b>Traveler $i</b></h5><br>
+        <div class='form-group row'>
+          <label for='fname_$i' class='col-sm-1 col-form-label'>First Name*: </label>
+          <input type='text' class='form-control' id='fname_$i' name='fname_$i' style='width:25%; height:25%;'>
+        </div>
+        </br>
+        <div class='form-group row'>
+          <label for='lname_$i' class='col-sm-1 col-form-label'>Last Name*:</label>
+          <input type='text' class='form-control' id='lname_$i' name='lname_$i' style='width:25%; height:25%;'>
+        </div>
+        </br>
+        <label for='person_type_$i'>Person Type*:</label>
+        <select name='person_type_$i' id='person_type_$i'>
+          <option value='adult'>Adult</option>
+          <option value='child'>Child</option>
+        </select>
+        <br><br>
+        <p>Choose a seat*:</p>";
+      $counter = 0;
+      echo "<div class='row'>";
+      foreach ($seats as $seat) {
+        echo "
+            <div class='col-2'>
+              <input type='radio' id='seat_$i' name='seat_$i' value='$seat[2]'>
+              <label for='$seat[2]'>$seat[2]</label><br>
+            </div>
+          ";
+        $counter++;
+        if ($counter % 6 == 0) {
+          echo "</div><div class='row'>";
+        }
+      }
+      echo "</div>
+        </br></br></br>";
+    }
+    ?>
     <button type='submit' name='submit' class='btn btn-primary'>Continue</button>
     <a href='./index.php'><button class='btn btn-primary me-2'>Cancel</button></a>
   </form>

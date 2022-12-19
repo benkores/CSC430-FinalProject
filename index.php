@@ -9,17 +9,6 @@ if (isset($_SESSION['AccountID'])) {
 if (isset($_POST['submit'])) {
   $_SESSION["from"] = $_POST['from'];
   $_SESSION["to"] = $_POST['to'];
-  /*
-  if ($_SESSION['from'] = $_SESSION['to']) {
-    echo "<script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const errorElement = document.getElementById('error_msg');
-        errorElement.style.color = \"#FF0000\";
-        errorElement.innerHTML = \"Departure airport and arrival airport cannot be the same\";
-    });
-        </script>";
-  } else {
-    */
     $_SESSION["dep_date"] = $_POST['dept_date'];
     $_SESSION["travelers"] = $_POST['travelers'];
     $_SESSION["class"] = $_POST['class'];

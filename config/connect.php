@@ -25,4 +25,9 @@ function getBookingsDB() {
   $bookings = new User_Bookings();
   return $bookings;
 }
+
+function getSeatsDB() {
+  $seats = new Flight_Seats();
+  return $seats;
+}
 ?>
