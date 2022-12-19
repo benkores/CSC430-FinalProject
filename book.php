@@ -6,6 +6,14 @@ if (isset($_SESSION['AccountID'])) {
 } else {
   $_SESSION['login'] = "Login";
 }
+
+if(isset($_POST['submit'])) {
+  $_SESSION['fname'] = $_POST['fname'];
+  $_SESSION['lname'] = $_POST['lname'];
+  $_SESSION['person_type'] = $_POST['person_type'];
+  $_SESSION['seat'] = $_POST['seat'];
+
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -52,51 +60,52 @@ if (isset($_SESSION['AccountID'])) {
   </nav>
 </div>
 
-
 <div class="wrapper">
-  <div class="col">
+<form method='POST'>
+<?php
+  for ($i = 1; $i <= $_SESSION['travelers']; $i++) {
+    echo "<div class='col'>
 
-    <h5><b>Flight 1: Traveler 1</b></h5><br>
-
-    <form method="POST">
-      <div class="form-group row">
-        <label for="fname" class="col-sm-1 col-form-label">First Name*: </label>
-        <input type="text" class="form-control" id="fname" name="fname" style="width:25%; height:25%;">
+    <h5><b>Traveler $i</b></h5><br>
+      <div class='form-group row'>
+        <label for='fname' class='col-sm-1 col-form-label'>First Name*: </label>
+        <input type='text' class='form-control' id='fname' name='fname' style='width:25%; height:25%;'>
       </div>
       </br>
-      <div class="form-group row">
-        <label for="lname" class="col-sm-1 col-form-label">Last Name*:</label>
-        <input type="text" class="form-control" id="lname" name="lname" style="width:25%; height:25%;">
+      <div class='form-group row'>
+        <label for='lname' class='col-sm-1 col-form-label'>Last Name*:</label>
+        <input type='text' class='form-control' id='lname' name='lname' style='width:25%; height:25%;'>
       </div>
       </br>
 
-      <label for="person_type">Person Type*:</label>
-      <select name="person_type" id="person_type">
-        <option value="adult">Adult</option>
-        <option value="child">Child</option>
+      <label for='person_type'>Person Type*:</label>
+      <select name='person_type' id='person_type'>
+        <option value='adult'>Adult</option>
+        <option value='child'>Child</option>
       </select>
       <br><br>
       <p>Choose a seat*:</p>
-      <input type="radio" id="seat" name="seat" value="21A">
-      <label for="A">21A</label><br>
-      <input type="radio" id="seat" name="seat" value="21B">
-      <label for="B">21B</label><br>
-      <input type="radio" id="seat" name="seat" value="21C">
-      <label for="C">21C</label><br>
-      <input type="radio" id="seat" name="seat" value="21D">
-      <label for="D">21D</label><br>
-      <input type="radio" id="seat" name="seat" value="21E">
-      <label for="E">21E</label><br>
-      <input type="radio" id="seat" name="seat" value="21F">
-      <label for="F">21F</label>
+      <input type='radio' id='seat' name='seat' value='21A'>
+      <label for='A'>21A</label><br>
+      <input type='radio' id='seat' name='seat' value='21B'>
+      <label for='B'>21B</label><br>
+      <input type='radio' id='seat' name='seat' value='21C'>
+      <label for='C'>21C</label><br>
+      <input type='radio' id='seat' name='seat' value='21D'>
+      <label for='D'>21D</label><br>
+      <input type='radio' id='seat' name='seat' value='21E'>
+      <label for='E'>21E</label><br>
+      <input type='radio' id='seat' name='seat' value='21F'>
+      <label for='F'>21F</label>
 
 
       </br></br></br>
-      <button type="submit" name="submit" class="btn btn-primary">Continue</button>
-      <a href="./index.php"><button class="btn btn-primary me-2">Cancel</button></a>
-    </form>
-
-  </div>
+  </div>";
+  }
+?>
+<button type='submit' name='submit' class='btn btn-primary'>Continue</button>
+<a href='./index.php'><button class='btn btn-primary me-2'>Cancel</button></a>
+</form>
 </div>
 
 </html>
