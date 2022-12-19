@@ -15,9 +15,14 @@ if (isset($_POST['submit'])) {
     array_push($traveler, $_POST["lname_$i"]);
     array_push($traveler, $_POST["person_type_$i"]);
     array_push($traveler, $_POST["seat_$i"]);
+    if (isset($_SESSION['flight_id_return'])) {
+      array_push($traveler, $_POST["seat_return_$i"]);
+    }
     array_push($travelers, $traveler);
   }
   $_SESSION['traveler_info'] = $travelers;
+  header("Location: payment.php");
+  exit();
 }
 ?>
 <!doctype html>
@@ -92,19 +97,19 @@ if (isset($_POST['submit'])) {
       echo "<select name='seat_$i' id='seat_$i' required>";
       echo "<option value=''>Choose one</option>";
       foreach ($seats as $seat) {
-        echo "<option value='$seat[2]'>$seat[2] - " . ($_SESSION['class'])."</option>";
-        }
+        echo "<option value='$seat[2]'>$seat[2] - " . ($_SESSION['class']) . "</option>";
+      }
       echo "</select><br><br>";
       if (isset($_SESSION['flight_id_return'])) {
-        echo  "<label for='seat_$i' class='me-3'>Choose a seat (return-trip)*:</label>";
-        echo "<select name='seat_$i' id='seat_$i' required>";
+        echo "<label for='seat_return_$i' class='me-3'>Choose a seat (return-trip)*:</label>";
+        echo "<select name='seat_return_$i' id='seat_return_$i' required>";
         echo "<option value=''>Choose one</option>";
         foreach ($seats as $seat) {
-          echo "<option value='$seat[2]'>$seat[2] - " . ($_SESSION['class'])."</option>";
-          }
-        echo "</select><br><br>";
+          echo "<option value='$seat[2]'>$seat[2] - " . ($_SESSION['class']) . "</option>";
         }
+        echo "</select><br><br>";
       }
+    }
     ?>
     <button type='submit' name='submit' class='btn btn-primary'>Continue</button>
     <a href='./index.php'><button class='btn btn-primary me-2'>Cancel</button></a>

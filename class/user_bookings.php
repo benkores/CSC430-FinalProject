@@ -12,7 +12,7 @@ class User_Bookings
 
     public function addBooking(int $account_id, int $flight_id, int $seat_id, string $first_name, string $last_name, string $person_type)
     {
-        $sqlQuery = "INSERT INTO USER_BOOKINGS(account_id,flight_id,seat_id,first_name,last_name,person_type) VALUES ($account_id,$flight_id,$seat_id,'$first_name','$last_name','$person_type'";
+        $sqlQuery = "INSERT INTO USER_BOOKINGS(account_id,flight_id,seat_id,first_name,last_name,person_type) VALUES ($account_id,$flight_id,$seat_id,'$first_name','$last_name','$person_type')";
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->execute();
     }

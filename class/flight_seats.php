@@ -29,11 +29,11 @@ class Flight_Seats
 
     public function getSeatID(string $seat)
     {   
-        $sqlQuery = "SELECT ID FROM FLIGHT_SEATS WHERE SEAT='$seat'";
+        $sqlQuery = "SELECT * FROM FLIGHT_SEATS WHERE SEAT='$seat'";
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->execute();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $seat_id = $row['id'];
+            $seat_id = $row['seat_id'];
         }
         return $seat_id;
     }

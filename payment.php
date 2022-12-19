@@ -6,6 +6,17 @@ if (isset($_SESSION['AccountID'])) {
 } else {
   $_SESSION['login'] = "Login";
 }
+$travelers = $_SESSION['traveler_info'];
+if (isset($_POST['submit'])) {
+  foreach($travelers as $traveler) {
+    getBookingsDB()->addBooking($_SESSION['AccountID'], $_SESSION['flight_id'], getSeatsDB()->getSeatID($traveler[3]), $traveler[0], $traveler[1], $traveler[2]);
+    if (isset($_SESSION['flight_id_return'])) {
+      getBookingsDB()->addBooking($_SESSION['AccountID'], $_SESSION['flight_id_return'], getSeatsDB()->getSeatID($traveler[4]), $traveler[0], $traveler[1], $traveler[2]);
+    }
+  }
+  header("Location: boarding_passes.php");
+  exit();
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -56,109 +67,142 @@ if (isset($_SESSION['AccountID'])) {
 
   <div class="wrapper">
     <h4 class="text-center"><b>Checkout</b></h4>
-    <div class="col">
-      <h5><b>One Way (1 Traveler)</b></h5><br>
-      <div class="card w-25">
-        <div class="card-body">
-          <p class="card-text">Nov 1 • 9:00 AM to 12:00 PM • Economy<br> John Doe • Adult</p>
+    <?php
+    if (isset($_SESSION['flight_id_return'])) {
+      echo "<h5><b>Round Trip (" . $_SESSION['travelers'] . " Travelers)</b></h5><br>";
+      foreach ($travelers as $traveler) {
+        echo "
+            <div class='row'>
+            <div class='col'>
+            <div class='card w-100 text-center'>
+            <div class='card-body'>
+            <p class='card-text'>" . $_SESSION['dep_date'] . " • " . $_SESSION['dep_time'] . " to " . $_SESSION['arrive_time'] . " • " . $_SESSION['class'] . " • " . "$traveler[0] $traveler[1]" . " • " . $traveler[2] . "</p
+            </div>
+            </div>
+            </div>";
+        echo "
+            <div class='col'>
+            <div class='card w-100 text-center'>
+            <div class='card-body'>
+            <p class='card-text'>" . $_SESSION['return_date'] . " • " . $_SESSION['dep_time_return'] . " to " . $_SESSION['arrive_time_return'] . " • " . $_SESSION['class'] . " • " . "$traveler[0] $traveler[1]" . " • " . $traveler[2] . "</p
+            </div>
+            </div>
+            </div>
+            </div>";
+      }
+    } else {
+      echo "<h5><b>One Way (" . $_SESSION['travelers'] . " Travelers)</b></h5><br>";
+      foreach ($travelers as $traveler) {
+        echo "
+            <div class='row'>
+            <div class='col'>
+            <div class='card w-100 text-center'>
+            <div class='card-body'>
+            <p class='card-text'>" . $_SESSION['dep_date'] . " • " . $_SESSION['dep_time'] . " to " . $_SESSION['arrive_time'] . " • " . $_SESSION['class'] . " • " . "$traveler[0] $traveler[1]" . " • " . $traveler[2] . "</p
+            </div>
+            </div>
+            </div>";
+      }
+      echo "</div>";
+    }
+    ?>
+    <br>
+    <table>
+      <tr>
+        <td>
+          <ul>
+            <li>Fare:</li>
+            <li>Taxes and Fees:</li>
+            <li>Total Due:</li>
+          </ul>
+        </td>
+        <td>
+          <ul class="float-right">
+            <li>$200.00</li>
+            <li>$20.00</li>
+            <li>$220.00</li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+
+    <br>
+    <form method="POST">
+      <div class="cards">
+        <h5 class="cards pe-5"><b>Card Information</b></h5>
+        <img src="/img/visa.PNG" alt="visa" style="width:50px;height:30px;">
+        <img src="/img/mastercard.PNG" alt="mastercard" style="width:50px;height:30px;">
+        <img src="/img/americanexpress.PNG" alt="americanexpress" style="width:40px;height:30px;">
+        <img src="/img/discover.PNG" alt="discover" style="width:50px;height:30px;">
+      </div>
+      <br><br>
+      <div class="form-group row">
+        <label for="card_num" class="col-sm-3 col-form-label">Card number*: </label>
+        <div class="col-sm-5">
+          <input type="number" class="form-control" id="card_number" name="card_number" required>
+        </div>
+      </div>
+      </br>
+      <div class="form-group row">
+        <label for="card_name" class="col-sm-3 col-form-label">Name on card*:</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control" id="card_name" name="card_name" required>
+        </div>
+      </div>
+      </br>
+      <div class="form-group row">
+        <label for="card_expiration" class="col-sm-3 col-form-label">Expiration Date*:</label>
+        <div class="col-sm-1">
+          <input type="text" class="form-control" id="card_expiration" name="card_expiration" placeholder="MM/YY"
+            required>
+        </div>
+        <label for="card_security" class="col-sm-3 col-form-label">Security code*:</label>
+        <div class="col-sm-1">
+          <input type="number" class="form-control" id="card_security" name="card_security" required>
+        </div>
+      </div>
+      <br><br>
+      <h5 class="cards"><b>Billing Information</b>
+      </h5><br><br>
+      <div class="form-group row">
+        <label for="billing_address" class="col-sm-3 col-form-label">Address*: </label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control" id="billing_address" name="billing_address" required>
         </div>
       </div><br>
-      <table>
-        <tr>
-          <td>
-            <ul>
-              <li>Fare:</li>
-              <li>Taxes and Fees:</li>
-              <li>Total Due:</li>
-            </ul>
-          </td>
-          <td>
-            <ul class="float-right">
-              <li>$200.00</li>
-              <li>$20.00</li>
-              <li>$220.00</li>
-            </ul>
-          </td>
-        </tr>
-      </table>
 
-      <br>
-      <form method="POST">
-        <div class="cards">
-          <h5 class="cards pe-5"><b>Card Information</b></h5>
-          <img src="/img/visa.PNG" alt="visa" style="width:50px;height:30px;">
-          <img src="/img/mastercard.PNG" alt="mastercard" style="width:50px;height:30px;">
-          <img src="/img/americanexpress.PNG" alt="americanexpress" style="width:40px;height:30px;">
-          <img src="/img/discover.PNG" alt="discover" style="width:50px;height:30px;">
+      <div class="form-group row">
+        <label for="billing_city" class="col-sm-3 col-form-label"> City*: </label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control" id="billing_city" name="billing_city" required>
         </div>
-        <br><br>
-        <div class="form-group row">
-          <label for="card_num" class="col-sm-3 col-form-label">Card number*: </label>
-          <div class="col-sm-5">
-            <input type="number" class="form-control" id="card_number" name="card_number" required>
-          </div>
-        </div>
-        </br>
-        <div class="form-group row">
-          <label for="card_name" class="col-sm-3 col-form-label">Name on card*:</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" id="card_name" name="card_name" required>
-          </div>
-        </div>
-        </br>
-        <div class="form-group row">
-          <label for="card_expiration" class="col-sm-3 col-form-label">Expiration Date*:</label>
-          <div class="col-sm-1">
-            <input type="text" class="form-control" id="card_expiration" name="card_expiration" placeholder="MM/YY"
-              required>
-          </div>
-          <label for="card_security" class="col-sm-3 col-form-label">Security code*:</label>
-          <div class="col-sm-1">
-            <input type="number" class="form-control" id="card_security" name="card_security" required>
-          </div>
-        </div>
-        <br><br>
-        <h5 class="cards"><b>Billing Information</b>
-        </h5><br><br>
-        <div class="form-group row">
-          <label for="billing_address" class="col-sm-3 col-form-label">Address*: </label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" id="billing_address" name="billing_address" required>
-          </div>
-        </div><br>
+      </div><br>
 
-        <div class="form-group row">
-          <label for="billing_city" class="col-sm-3 col-form-label"> City*: </label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" id="billing_city" name="billing_city" required>
-          </div>
-        </div><br>
-
-        <div class="form-group row">
-          <label for="billing_state" class="col-sm-3 col-form-label">State*: </label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" id="billing_state" name="billing_state" required>
-          </div>
-        </div><br>
-
-        <div class="form-group row">
-          <label for="billing_zip" class="col-sm-3 col-form-label">ZIP*: </label>
-          <div class="col-sm-5">
-            <input type="number" class="form-control" id="billing_zip" name="billing_zip" required>
-          </div>
-        </div><br>
-
-        <div class="form-group row">
-          <label for="billing_country" class="col-sm-3 col-form-label"> Country*: </label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" id="billing_country" name="billing_country" required>
-          </div>
+      <div class="form-group row">
+        <label for="billing_state" class="col-sm-3 col-form-label">State*: </label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control" id="billing_state" name="billing_state" required>
         </div>
-        </br></br></br>
-        <button type="submit" name="submit" class="btn btn-primary">Buy</button>
-        <a href="./index.php"><button class="btn btn-primary me-2">Cancel</button></a>
-      </form>
-    </div>
+      </div><br>
+
+      <div class="form-group row">
+        <label for="billing_zip" class="col-sm-3 col-form-label">ZIP*: </label>
+        <div class="col-sm-5">
+          <input type="number" class="form-control" id="billing_zip" name="billing_zip" required>
+        </div>
+      </div><br>
+
+      <div class="form-group row">
+        <label for="billing_country" class="col-sm-3 col-form-label"> Country*: </label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control" id="billing_country" name="billing_country" required>
+        </div>
+      </div>
+      </br></br></br>
+      <button type="submit" name="submit" class="btn btn-primary">Buy</button>
+      <a href="./index.php"><button class="btn btn-primary me-2">Cancel</button></a>
+    </form>
+  </div>
   </div>
 
 
