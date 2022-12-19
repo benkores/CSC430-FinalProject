@@ -11,10 +11,10 @@ if (isset($_POST['submit'])) {
   $travelers = array();
   for ($i = 1; $i <= $_SESSION['travelers']; $i++) {
     $traveler = array();
-    array_push($traveler, $_POST[`fname_$i`]);
-    array_push($traveler, $_POST[`lname_$i`]);
-    array_push($traveler, $_POST[`person_type_$i`]);
-    array_push($traveler, $_POST[`seat_$i`]);
+    array_push($traveler, $_POST["fname_$i"]);
+    array_push($traveler, $_POST["lname_$i"]);
+    array_push($traveler, $_POST["person_type_$i"]);
+    array_push($traveler, $_POST["seat_$i"]);
     array_push($travelers, $traveler);
   }
   $_SESSION['traveler_info'] = $travelers;
