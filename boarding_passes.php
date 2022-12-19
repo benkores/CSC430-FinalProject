@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="css/styles.css">
 
-  <title>Home</title>
+  <title>My Boarding Passes</title>
 </head>
 
 <body>
