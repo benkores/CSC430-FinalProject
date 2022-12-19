@@ -12,7 +12,6 @@ if(isset($_POST['submit'])) {
   $_SESSION['lname'] = $_POST['lname'];
   $_SESSION['person_type'] = $_POST['person_type'];
   $_SESSION['seat'] = $_POST['seat'];
-
 }
 ?>
 <!doctype html>
