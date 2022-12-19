@@ -7,7 +7,7 @@ if (isset($_SESSION['AccountID'])) {
   $_SESSION['login'] = "Login";
 }
 $travelers = $_SESSION['traveler_info'];
-$fare;
+$fare = 0;
 foreach ($travelers as $traveler) {
   $fare += $_SESSION['price'];
   if (isset($_SESSION['flight_id_return'])) {
