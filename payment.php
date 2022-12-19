@@ -154,14 +154,15 @@ if (isset($_POST['submit'])) {
       <div class="form-group row">
         <label for="card_num" class="col-sm-3 col-form-label">Card number*: </label>
         <div class="col-sm-5">
-          <input type="number" class="form-control" id="card_number" name="card_number" required>
+          <input type="number" class="form-control" id="card_number" name="card_number" required
+            style="font-weight: bold">
         </div>
       </div>
       </br>
       <div class="form-group row">
         <label for="card_name" class="col-sm-3 col-form-label">Name on card*:</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="card_name" name="card_name" required>
+          <input type="text" class="form-control" id="card_name" name="card_name" required  style="font-weight: bold">
         </div>
       </div>
       </br>
@@ -169,11 +170,12 @@ if (isset($_POST['submit'])) {
         <label for="card_expiration" class="col-sm-3 col-form-label">Expiration Date*:</label>
         <div class="col-sm-1">
           <input type="text" class="form-control" id="card_expiration" name="card_expiration" placeholder="MM/YY"
-            required>
+            style="font-weight: bold" required>
         </div>
         <label for="card_security" class="col-sm-3 col-form-label">Security code*:</label>
         <div class="col-sm-1">
-          <input type="number" class="form-control" id="card_security" name="card_security" required>
+          <input type="number" class="form-control" id="card_security" name="card_security" required
+            style="font-weight: bold">
         </div>
       </div>
       <br><br>
@@ -183,7 +185,7 @@ if (isset($_POST['submit'])) {
         <label for="billing_address" class="col-sm-3 col-form-label">Address*: </label>
         <div class="col-sm-5">
           <input type="text" class="form-control" id="billing_address" name="billing_address" required
-            autocomplete="one-time-code">
+            style="font-weight: bold" autocomplete="one-time-code">
         </div>
       </div><br>
 
@@ -191,7 +193,7 @@ if (isset($_POST['submit'])) {
         <label for="billing_city" class="col-sm-3 col-form-label"> City*: </label>
         <div class="col-sm-5">
           <input type="text" class="form-control" id="billing_city" name="billing_city" required
-            autocomplete="one-time-code">
+            style="font-weight: bold" autocomplete="one-time-code">
         </div>
       </div><br>
 
@@ -199,7 +201,7 @@ if (isset($_POST['submit'])) {
         <label for="billing_state" class="col-sm-3 col-form-label">State*: </label>
         <div class="col-sm-5">
           <input type="text" class="form-control" id="billing_state" name="billing_state" required
-            autocomplete="one-time-code">
+            style="font-weight: bold" autocomplete="one-time-code">
         </div>
       </div><br>
 
@@ -207,7 +209,7 @@ if (isset($_POST['submit'])) {
         <label for="billing_zip" class="col-sm-3 col-form-label">ZIP*: </label>
         <div class="col-sm-5">
           <input type="number" class="form-control" id="billing_zip" name="billing_zip" required
-            autocomplete="one-time-code">
+            style="font-weight: bold" autocomplete="one-time-code">
         </div>
       </div><br>
 
@@ -215,7 +217,7 @@ if (isset($_POST['submit'])) {
         <label for="billing_country" class="col-sm-3 col-form-label"> Country*: </label>
         <div class="col-sm-5">
           <input type="text" class="form-control" id="billing_country" name="billing_country" required
-            autocomplete="one-time-code">
+            style="font-weight: bold" autocomplete="one-time-code">
         </div>
       </div>
       </br></br></br>

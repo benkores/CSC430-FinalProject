@@ -79,12 +79,12 @@ if (isset($_POST['submit'])) {
       <h5><b>Traveler $i</b></h5><br>
         <div class='form-group row'>
           <label for='fname_$i' class='col-sm-1 col-form-label'>First Name*: </label>
-          <input type='text' class='form-control' id='fname_$i' name='fname_$i' style='width:25%; height:25%;' required>
+          <input type='text' class='form-control' id='fname_$i' name='fname_$i' style='width:25%; height:25%;font-weight: bold;' required>
         </div>
         </br>
         <div class='form-group row'>
           <label for='lname_$i' class='col-sm-1 col-form-label'>Last Name*:</label>
-          <input type='text' class='form-control' id='lname_$i' name='lname_$i' style='width:25%; height:25%;' required>
+          <input type='text' class='form-control' id='lname_$i' name='lname_$i' style='width:25%; height:25%;font-weight: bold;' required>
         </div>
         </br>
         <label for='person_type_$i' class='me-3'>Person Type*:</label>
