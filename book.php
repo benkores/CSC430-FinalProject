@@ -74,16 +74,16 @@ if (isset($_POST['submit'])) {
       <h5><b>Traveler $i</b></h5><br>
         <div class='form-group row'>
           <label for='fname_$i' class='col-sm-1 col-form-label'>First Name*: </label>
-          <input type='text' class='form-control' id='fname_$i' name='fname_$i' style='width:25%; height:25%;'>
+          <input type='text' class='form-control' id='fname_$i' name='fname_$i' style='width:25%; height:25%;' required>
         </div>
         </br>
         <div class='form-group row'>
           <label for='lname_$i' class='col-sm-1 col-form-label'>Last Name*:</label>
-          <input type='text' class='form-control' id='lname_$i' name='lname_$i' style='width:25%; height:25%;'>
+          <input type='text' class='form-control' id='lname_$i' name='lname_$i' style='width:25%; height:25%;' required>
         </div>
         </br>
         <label for='person_type_$i'>Person Type*:</label>
-        <select name='person_type_$i' id='person_type_$i'>
+        <select name='person_type_$i' id='person_type_$i' required>
           <option value='adult'>Adult</option>
           <option value='child'>Child</option>
         </select>
@@ -94,7 +94,7 @@ if (isset($_POST['submit'])) {
       foreach ($seats as $seat) {
         echo "
             <div class='col-2'>
-              <input type='radio' id='seat_$i' name='seat_$i' value='$seat[2]'>
+              <input type='radio' id='seat_$i' name='seat_$i' value='$seat[2]' required>
               <label for='$seat[2]'>$seat[2]</label><br>
             </div>
           ";
